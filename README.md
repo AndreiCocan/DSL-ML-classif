@@ -486,7 +486,7 @@ println(s"Coefficients: ${lsvcModel.coefficients} Intercept: ${lsvcModel.interce
 
 ```
 ### Tableau comparatif
-| Caractéristique                  | scikit-learn       | GoLearn            | TensorFlow          | Shark               | MLlib               |
+| Caractéristique                  | scikit-learn  (Python)     | GoLearn  (Go)          | TensorFlow (Java)         | Shark    (C++)           | MLlib     (Scala)          |
 |----------------------------------|--------------------|--------------------|---------------------|---------------------|---------------------|
 | Communauté et Support            | Grande communauté et support actif | Communauté en croissance | Communauté active   | Communauté en croissance | Communauté en croissance |
 | Apprentissage automatique        | Oui, méthodes traditionnelles | Oui, axé sur les arbres de décision et les forêts aléatoires | Oui, large éventail de modèles | Oui, avec des bibliothèques pour l'optimisation numérique | Oui, diverses méthodes |
