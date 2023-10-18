@@ -1,14 +1,14 @@
 # DSL-ML-classif
 
-## Analyse du domaine
+## Domain analysis
 
 ### Java
 
-TensorFlow est une bibliothèque open source développée par Google qui est largement utilisée dans le domaine de l'apprentissage automatique (machine learning) et de l'apprentissage profond (deep learning). La version Java de TensorFlow permet aux développeurs Java de bénéficier de l'écosystème de TensorFlow tout en travaillant dans leur langage de prédilection.
+TensorFlow is an open-source library developed by Google that is widely used in the field of machine learning and deep learning. The Java version of TensorFlow allows Java developers to benefit from the TensorFlow ecosystem while working in their preferred language.
 
-Site officiel : https://www.tensorflow.org/jvm/install?hl=fr 
+Official website : https://www.tensorflow.org/jvm/install?hl=fr 
 
-Exemple : https://github.com/tensorflow/java-models/blob/master/tensorflow-examples/src/main/java/org/tensorflow/model/examples/regression/linear/LinearRegressionExample.java
+Example : https://github.com/tensorflow/java-models/blob/master/tensorflow-examples/src/main/java/org/tensorflow/model/examples/regression/linear/LinearRegressionExample.java
 <details>
 <summary>Open code example</summary>
 
@@ -146,11 +146,10 @@ public class LinearRegressionExample {
 
 ### C++
 
-Pour les tâches de classification en apprentissage automatique, le C++ offre plusieurs avantages : Performance, Contrôle, Intégration. les bibliothèques les plus couramment utilisées étant : Tensorflow, Pytorch, DLIB, Shark, MLPack.
-Shark est une bibliothèque open source de haute performance pour l'apprentissage automatique et l'optimisation, écrite en C++. Elle est conçue pour fournir une large gamme d'outils et d'algorithmes pour diverses tâches en apprentissage automatique, notamment la classification, la régression, le regroupement, la réduction de la dimensionnalité, et bien plus encore.
+For classification tasks in machine learning, C++ offers several advantages: Performance, Control, Integration. The most commonly used libraries are TensorFlow, PyTorch, DLIB, Shark, and MLPack. Shark is a high-performance open-source library for machine learning and optimization, written in C++. It is designed to provide a wide range of tools and algorithms for various machine learning tasks, including classification, regression, clustering, dimensionality reduction, and much more.
 
-#### Exemple de la création et l'entraînement d’un réseau de neurones
-Source : [exemple de la documentation shark-ml](http://image.diku.dk/shark/doxygen_pages/html/_f_f_n_n_basic_tutorial_8cpp_source.html ))
+#### Neurol network example
+Source : [shark-ml doc](http://image.diku.dk/shark/doxygen_pages/html/_f_f_n_n_basic_tutorial_8cpp_source.html ))
 <details>
 	<summary>Open code example for neural network</summary>
 
@@ -201,8 +200,8 @@ network.setParameterVector(optimizer.solution().point);
 ```
 </details>
 
-#### Exemple d’un KNN
-Source : [exemple de la documentation shark-ml](http://image.diku.dk/shark/doxygen_pages/html/_k_n_n_tutorial_8cpp_source.html ))
+#### kNN example
+Source : [shark-ml doc](http://image.diku.dk/shark/doxygen_pages/html/_k_n_n_tutorial_8cpp_source.html ))
 
 <details>
 	<summary>Open code example for kNN</summary>
@@ -262,8 +261,8 @@ Source : [exemple de la documentation shark-ml](http://image.diku.dk/shark/doxyg
 ```
 </details>
 
-#### Exemple de code l'entraînement d’un SVM avec cross validation
-Source : [exemple de la documentation shark-ml](http://image.diku.dk/shark/doxygen_pages/html/_c_svm_grid_search_tutorial_8cpp_source.html ))
+#### SVM example, with cross-validation
+Source : [shark-ml doc](http://image.diku.dk/shark/doxygen_pages/html/_c_svm_grid_search_tutorial_8cpp_source.html ))
 
 <details>
 	<summary>Open code example for SVM with cross validation</summary>
@@ -343,13 +342,13 @@ int main() {
 ---
 
 ### Python
-Python est un langage de programmation interprété polyvalent, réputé pour sa simplicité syntaxique qui le rend facile à apprendre et à lire. Il est largement utilisé dans le développement web, la science des données, l'automatisation de tâches et bien d'autres domaines grâce à sa vaste bibliothèque standard et à sa communauté active de développeurs. Parmi les bibliothèques pour l’apprentissage automatique, on trouve Scikit-learn, Tensorflow et PyTorch.
+Python is a versatile interpreted programming language, renowned for its simple syntax that makes it easy to learn and read. It is widely used in web development, data science, task automation, and many other fields, thanks to its extensive standard library and active developer community. Among the libraries for machine learning, one can find Scikit-learn, TensorFlow, and PyTorch.
 
-#### Scikit-learn ([site web officiel](https://scikit-learn.org/stable/))
-Scikit-learn est l'une des bibliothèques Python les plus populaires pour l'apprentissage automatique. Elle offre un large éventail d'outils et d'algorithmes pour le traitement des données, l'apprentissage supervisé et non supervisé, la réduction de la dimensionnalité, la sélection de modèles, l'évaluation des modèles, et bien plus encore. Scikit-learn est conçu pour être simple à utiliser, mais il reste puissant et flexible pour la résolution de tâches complexes en apprentissage automatique. Scikit-learn est utilisé dans divers domaines, tels que l'analyse de données, la classification d'images, la détection d'anomalies, la bioinformatique, la finance, et bien d'autres.
+#### Scikit-learn ([official website](https://scikit-learn.org/stable/))
+Scikit-learn is one of the most popular Python libraries for machine learning. It provides a wide range of tools and algorithms for data processing, supervised and unsupervised learning, dimensionality reduction, model selection, model evaluation, and much more. Scikit-learn is designed to be user-friendly, yet it remains powerful and flexible for solving complex machine learning tasks. It is used in various fields, including data analysis, image classification, anomaly detection, bioinformatics, finance, and many others.
 
-##### Exemple de code pour la reconnaissance de chiffres écrits à la main 
-Source : [exemple de la documentation scikit-learn](https://scikit-learn.org/stable/auto_examples/classification/plot_digits_classification.html#sphx-glr-auto-examples-classification-plot-digits-classification-py))
+##### Code example for recognition of handwritten digits
+Source : [scikit-learn doc](https://scikit-learn.org/stable/auto_examples/classification/plot_digits_classification.html#sphx-glr-auto-examples-classification-plot-digits-classification-py))
 
 <details>
 	<summary>Open code example</summary>
@@ -424,13 +423,14 @@ plt.show()
 
 ### Go
 
-Go, également connu sous le nom de Golang, est un langage de programmation open-source créé par Google. Il se distingue par sa simplicité syntaxique, son efficacité d'exécution et sa prise en charge native de la programmation concurrente avec les "goroutines". Go est largement utilisé dans le développement backend, les services web, les applications cloud et les outils en ligne de commande en raison de sa simplicité, de sa rapidité et de sa robustesse. Il offre également une gestion automatique de la mémoire, réduisant les erreurs liées à la gestion de la mémoire.
+Go, also known as Golang, is an open-source programming language created by Google. It is distinguished by its simple syntax, efficient execution, and native support for concurrent programming with 'goroutines.' Go is widely used in backend development, web services, cloud applications, and command-line tools due to its simplicity, speed, and robustness. It also offers automatic memory management, reducing errors related to memory management.
 
 #### GoLearn
 
-GoLearn ([repositoryl](https://github.com/sjwhitworth/golearn)) est une bibliothèque d'apprentissage automatique open source développée en langage de programmation Go (ou Golang). Elle offre un ensemble de fonctionnalités pour la création, l'entraînement et l'évaluation de modèles d'apprentissage automatique dans l’écosystème Go. 
-#### Exemple de code
-Source : [exemple de la documentation golang](https://golangdocs.com/golang-machine-learning-libraries))
+"GoLearn ([repository](https://github.com/sjwhitworth/golearn)) is an open-source machine learning library developed in the Go (or Golang) programming language. It provides a set of features for creating, training, and evaluating machine learning models within the Go ecosystem."
+
+#### Code example
+Source : [golang doc](https://golangdocs.com/golang-machine-learning-libraries))
 <details>
 	<summary>Open code example</summary>
 
@@ -485,11 +485,11 @@ func main() {
 
 ### Scala
 
-Scala est un langage de programmation polyvalent conçu pour la concision et la sécurité. Il s'exécute sur la machine virtuelle Java (JVM) et offre un mélange de fonctionnalités orientées objet et fonctionnelles, ce qui en fait un choix populaire pour les applications de traitement des données et la création de systèmes évolutifs.
+Scala is a versatile programming language designed for conciseness and safety. It runs on the Java Virtual Machine (JVM) and provides a blend of object-oriented and functional features, making it a popular choice for data processing applications and the development of scalable systems.
 
 #### Apache Spark MLlib
 
-Apache Spark MLlib est une bibliothèque d'apprentissage automatique open source conçue pour fonctionner avec le framework Apache Spark, en utilisant le langage de programmation Scala. L’intégration de la bibliothèque dans le framework Apache Spark permet de tirer parti de la mise en cluster et de la parallélisation pour traiter efficacement des volumes massifs de données.
+Apache Spark MLlib is an open-source machine learning library designed to work with the Apache Spark framework, using the Scala programming language. The integration of the library into the Apache Spark framework allows for leveraging clustering and parallelization to efficiently process massive volumes of data.
 
 <details>
 	<summary>Open code example</summary>
@@ -515,21 +515,21 @@ println(s"Coefficients: ${lsvcModel.coefficients} Intercept: ${lsvcModel.interce
 
 ---
 
-### Tableau comparatif
+### Comparative table
 
 <details>
 	<summary>Open table</summary>
 
-| Caractéristique                  | scikit-learn  (Python)     | GoLearn  (Go)          | TensorFlow (Java)         | Shark    (C++)           | MLlib     (Scala)          |
-|----------------------------------|--------------------|--------------------|---------------------|---------------------|---------------------|
-| Communauté et Support            | Grande communauté et support actif | Communauté en croissance | Communauté active   | Communauté en croissance | Communauté en croissance |
-| Apprentissage automatique        | Oui, méthodes traditionnelles | Oui, axé sur les arbres de décision et les forêts aléatoires | Oui, large éventail de modèles | Oui, avec des bibliothèques pour l'optimisation numérique | Oui, diverses méthodes |
-| Apprentissage en profondeur      | Non, sauf avec des extensions tierces (comme TensorFlow) | Non, principalement axé sur l'apprentissage automatique classique | Oui, avec des fonctionnalités complètes d'apprentissage en profondeur | Oui, avec des capacités d'apprentissage en profondeur | Non, principalement axé sur l'apprentissage automatique classique |
-| Facilité d'utilisation            | Très convivial, idéal pour les débutants en ML | Convivial, mais moins de ressources disponibles pour les débutants | Un peu plus complexe, principalement destiné aux utilisateurs avancés | Convivial, mais peut nécessiter une expertise en C++ | Convivial, adapté aux utilisateurs de Scala |
-| Flexibilité                      | Moins flexible en termes de personnalisation de modèles | Plus de flexibilité que scikit-learn, mais moins que TensorFlow | Très flexible avec la possibilité de personnaliser chaque aspect du modèle | Flexible avec une grande variété de paramètres personnalisables | Flexible avec des API haut niveau et bas niveau |
-| Performances                     | Performances solides pour les tâches de base | Performances correctes, mais pas aussi performant que TensorFlow | Performances exceptionnelles, idéales pour l'apprentissage en profondeur | Performances solides pour l'apprentissage automatique classique | Performances solides pour diverses tâches |
-| Déploiement                     | Facile à déployer en production grâce à sa simplicité | Peut être déployé, mais nécessite plus d'efforts que scikit-learn | Peut être déployé, mais nécessite une gestion plus complexe | Peut être déployé avec des efforts de déploiement C++ | Peut être déployé dans l'écosystème Spark |
-| Cas d'utilisation typiques       | Exploration de données, classification, régression, clustering | Arbres de décision, forêts aléatoires, classification | Réseaux de neurones, traitement du langage naturel, vision par ordinateur | Apprentissage automatique classique, optimisation numérique | Diverses tâches d'apprentissage automatique |
+| Characteristic                | scikit-learn (Python) | GoLearn (Go) | TensorFlow (Java) | Shark (C++) | MLlib (Scala) |
+|------------------------------|-----------------------|--------------|--------------------|------------|--------------|
+| Community and Support        | Large community and active support | Growing community | Active community | Growing community | Growing community |
+| Machine Learning             | Yes, traditional methods | Yes, focused on decision trees and random forests | Yes, wide range of models | Yes, with libraries for numerical optimization | Yes, various methods |
+| Deep Learning                | No, except with third-party extensions (like TensorFlow) | No, primarily focused on classical machine learning | Yes, with comprehensive deep learning capabilities | Yes, with deep learning capabilities | No, primarily focused on classical machine learning |
+| Ease of Use                  | Very user-friendly, ideal for ML beginners | User-friendly but fewer resources for beginners | Slightly more complex, mainly for advanced users | User-friendly but may require C++ expertise | User-friendly, suitable for Scala users |
+| Flexibility                  | Less flexible in terms of model customization | More flexibility than scikit-learn but less than TensorFlow | Highly flexible with the ability to customize every aspect of the model | Flexible with a wide variety of customizable parameters | Flexible with high-level and low-level APIs |
+| Performance                  | Strong performance for basic tasks | Decent performance but not as powerful as TensorFlow | Exceptional performance, ideal for deep learning | Strong performance for classical machine learning | Strong performance for various tasks |
+| Deployment                   | Easy to deploy in production due to its simplicity | Can be deployed but requires more effort than scikit-learn | Can be deployed but requires more complex management | Can be deployed with C++ deployment efforts | Can be deployed in the Spark ecosystem |
+| Typical Use Cases            | Data exploration, classification, regression, clustering | Decision trees, random forests, classification | Neural networks, natural language processing, computer vision | Classical machine learning, numerical optimization | Various machine learning tasks |
 </details>
 
 ## Expected features for our DSL
