@@ -8,7 +8,10 @@ TensorFlow est une bibliothèque open source développée par Google qui est lar
 
 Site officiel : https://www.tensorflow.org/jvm/install?hl=fr 
 
-Exemple : https://github.com/tensorflow/java-models/blob/master/tensorflow-examples/src/main/java/org/tensorflow/model/examples/regression/linear/LinearRegressionExample.java 
+Exemple : https://github.com/tensorflow/java-models/blob/master/tensorflow-examples/src/main/java/org/tensorflow/model/examples/regression/linear/LinearRegressionExample.java
+<details>
+<summary>Open code example</summary>
+
 ```java
 package org.tensorflow.model.examples.regression.linear;
 
@@ -137,17 +140,19 @@ public class LinearRegressionExample {
     }
 }
 ```
+</details>
 
+---
 
 ### C++
 
 Pour les tâches de classification en apprentissage automatique, le C++ offre plusieurs avantages : Performance, Contrôle, Intégration. les bibliothèques les plus couramment utilisées étant : Tensorflow, Pytorch, DLIB, Shark, MLPack.
 Shark est une bibliothèque open source de haute performance pour l'apprentissage automatique et l'optimisation, écrite en C++. Elle est conçue pour fournir une large gamme d'outils et d'algorithmes pour diverses tâches en apprentissage automatique, notamment la classification, la régression, le regroupement, la réduction de la dimensionnalité, et bien plus encore.
 
-//Neural Network 
-
 #### Exemple de la création et l'entraînement d’un réseau de neurones
 Source : [exemple de la documentation shark-ml](http://image.diku.dk/shark/doxygen_pages/html/_f_f_n_n_basic_tutorial_8cpp_source.html ))
+<details>
+	<summary>Open code example for neural network</summary>
 
 ```cpp
 
@@ -194,9 +199,13 @@ for(std::size_t i = 0; i != iterations; ++i){
 }
 network.setParameterVector(optimizer.solution().point);
 ```
+</details>
 
 #### Exemple d’un KNN
 Source : [exemple de la documentation shark-ml](http://image.diku.dk/shark/doxygen_pages/html/_k_n_n_tutorial_8cpp_source.html ))
+
+<details>
+	<summary>Open code example for kNN</summary>
 
 ```cpp
 
@@ -251,9 +260,13 @@ Source : [exemple de la documentation shark-ml](http://image.diku.dk/shark/doxyg
  }
 
 ```
+</details>
 
 #### Exemple de code l'entraînement d’un SVM avec cross validation
 Source : [exemple de la documentation shark-ml](http://image.diku.dk/shark/doxygen_pages/html/_c_svm_grid_search_tutorial_8cpp_source.html ))
+
+<details>
+	<summary>Open code example for SVM with cross validation</summary>
 
 ```cpp
 
@@ -325,9 +338,9 @@ int main() {
 }
 
 ```
+</details>
 
-
-
+---
 
 ### Python
 Python est un langage de programmation interprété polyvalent, réputé pour sa simplicité syntaxique qui le rend facile à apprendre et à lire. Il est largement utilisé dans le développement web, la science des données, l'automatisation de tâches et bien d'autres domaines grâce à sa vaste bibliothèque standard et à sa communauté active de développeurs. Parmi les bibliothèques pour l’apprentissage automatique, on trouve Scikit-learn, Tensorflow et PyTorch.
@@ -337,6 +350,9 @@ Scikit-learn est l'une des bibliothèques Python les plus populaires pour l'appr
 
 ##### Exemple de code pour la reconnaissance de chiffres écrits à la main 
 Source : [exemple de la documentation scikit-learn](https://scikit-learn.org/stable/auto_examples/classification/plot_digits_classification.html#sphx-glr-auto-examples-classification-plot-digits-classification-py))
+
+<details>
+	<summary>Open code example</summary>
 
 ```python
 # Author: Gael Varoquaux <gael dot varoquaux at normalesup dot org>
@@ -402,6 +418,9 @@ print(f"Confusion matrix:\n{disp.confusion_matrix}")
 
 plt.show()
 ```
+</details>
+
+---
 
 ### Go
 
@@ -412,6 +431,9 @@ Go, également connu sous le nom de Golang, est un langage de programmation open
 GoLearn ([repositoryl](https://github.com/sjwhitworth/golearn)) est une bibliothèque d'apprentissage automatique open source développée en langage de programmation Go (ou Golang). Elle offre un ensemble de fonctionnalités pour la création, l'entraînement et l'évaluation de modèles d'apprentissage automatique dans l’écosystème Go. 
 #### Exemple de code
 Source : [exemple de la documentation golang](https://golangdocs.com/golang-machine-learning-libraries))
+<details>
+	<summary>Open code example</summary>
+
 ```go
 package main
  
@@ -457,7 +479,9 @@ func main() {
 }
 
 ```
+</details>
 
+---
 
 ### Scala
 
@@ -467,7 +491,9 @@ Scala est un langage de programmation polyvalent conçu pour la concision et la 
 
 Apache Spark MLlib est une bibliothèque d'apprentissage automatique open source conçue pour fonctionner avec le framework Apache Spark, en utilisant le langage de programmation Scala. L’intégration de la bibliothèque dans le framework Apache Spark permet de tirer parti de la mise en cluster et de la parallélisation pour traiter efficacement des volumes massifs de données.
 
-Exemple de code
+<details>
+	<summary>Open code example</summary>
+
 ```scala
 import org.apache.spark.ml.classification.LinearSVC
 
@@ -485,7 +511,15 @@ val lsvcModel = lsvc.fit(training)
 println(s"Coefficients: ${lsvcModel.coefficients} Intercept: ${lsvcModel.intercept}")
 
 ```
+</details>
+
+---
+
 ### Tableau comparatif
+
+<details>
+	<summary>Open table</summary>
+
 | Caractéristique                  | scikit-learn  (Python)     | GoLearn  (Go)          | TensorFlow (Java)         | Shark    (C++)           | MLlib     (Scala)          |
 |----------------------------------|--------------------|--------------------|---------------------|---------------------|---------------------|
 | Communauté et Support            | Grande communauté et support actif | Communauté en croissance | Communauté active   | Communauté en croissance | Communauté en croissance |
@@ -496,7 +530,7 @@ println(s"Coefficients: ${lsvcModel.coefficients} Intercept: ${lsvcModel.interce
 | Performances                     | Performances solides pour les tâches de base | Performances correctes, mais pas aussi performant que TensorFlow | Performances exceptionnelles, idéales pour l'apprentissage en profondeur | Performances solides pour l'apprentissage automatique classique | Performances solides pour diverses tâches |
 | Déploiement                     | Facile à déployer en production grâce à sa simplicité | Peut être déployé, mais nécessite plus d'efforts que scikit-learn | Peut être déployé, mais nécessite une gestion plus complexe | Peut être déployé avec des efforts de déploiement C++ | Peut être déployé dans l'écosystème Spark |
 | Cas d'utilisation typiques       | Exploration de données, classification, régression, clustering | Arbres de décision, forêts aléatoires, classification | Réseaux de neurones, traitement du langage naturel, vision par ordinateur | Apprentissage automatique classique, optimisation numérique | Diverses tâches d'apprentissage automatique |
-
+</details>
 
 ## Expected features for our DSL
 
