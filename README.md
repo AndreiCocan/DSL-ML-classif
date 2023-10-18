@@ -596,3 +596,5 @@ model "myAlreadyTrainedModel" svm {
 
 
 ## Metamodel
+
+![](metamodel.png)
