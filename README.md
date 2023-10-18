@@ -1,6 +1,8 @@
 # DSL-ML-classif
 
-## Java
+## Analyse du domaine
+
+### Java
 
 TensorFlow est une bibliothèque open source développée par Google qui est largement utilisée dans le domaine de l'apprentissage automatique (machine learning) et de l'apprentissage profond (deep learning). La version Java de TensorFlow permet aux développeurs Java de bénéficier de l'écosystème de TensorFlow tout en travaillant dans leur langage de prédilection.
 
@@ -137,7 +139,7 @@ public class LinearRegressionExample {
 ```
 
 
-## C++
+### C++
 
 Pour les tâches de classification en apprentissage automatique, le C++ offre plusieurs avantages : Performance, Contrôle, Intégration. les bibliothèques les plus couramment utilisées étant : Tensorflow, Pytorch, DLIB, Shark, MLPack.
 Shark est une bibliothèque open source de haute performance pour l'apprentissage automatique et l'optimisation, écrite en C++. Elle est conçue pour fournir une large gamme d'outils et d'algorithmes pour diverses tâches en apprentissage automatique, notamment la classification, la régression, le regroupement, la réduction de la dimensionnalité, et bien plus encore.
@@ -327,13 +329,13 @@ int main() {
 
 
 
-## Python
+### Python
 Python est un langage de programmation interprété polyvalent, réputé pour sa simplicité syntaxique qui le rend facile à apprendre et à lire. Il est largement utilisé dans le développement web, la science des données, l'automatisation de tâches et bien d'autres domaines grâce à sa vaste bibliothèque standard et à sa communauté active de développeurs. Parmi les bibliothèques pour l’apprentissage automatique, on trouve Scikit-learn, Tensorflow et PyTorch.
 
-### Scikit-learn ([site web officiel](https://scikit-learn.org/stable/))
+#### Scikit-learn ([site web officiel](https://scikit-learn.org/stable/))
 Scikit-learn est l'une des bibliothèques Python les plus populaires pour l'apprentissage automatique. Elle offre un large éventail d'outils et d'algorithmes pour le traitement des données, l'apprentissage supervisé et non supervisé, la réduction de la dimensionnalité, la sélection de modèles, l'évaluation des modèles, et bien plus encore. Scikit-learn est conçu pour être simple à utiliser, mais il reste puissant et flexible pour la résolution de tâches complexes en apprentissage automatique. Scikit-learn est utilisé dans divers domaines, tels que l'analyse de données, la classification d'images, la détection d'anomalies, la bioinformatique, la finance, et bien d'autres.
 
-#### Exemple de code pour la reconnaissance de chiffres écrits à la main 
+##### Exemple de code pour la reconnaissance de chiffres écrits à la main 
 Source : [exemple de la documentation scikit-learn](https://scikit-learn.org/stable/auto_examples/classification/plot_digits_classification.html#sphx-glr-auto-examples-classification-plot-digits-classification-py))
 
 ```python
@@ -347,7 +349,7 @@ import matplotlib.pyplot as plt
 from sklearn import datasets, metrics, svm
 from sklearn.model_selection import train_test_split
 ```
-#### Digits dataset
+##### Digits dataset
 ```python
 digits = datasets.load_digits()
 
@@ -357,7 +359,7 @@ for ax, image, label in zip(axes, digits.images, digits.target):
 	ax.imshow(image, cmap=plt.cm.gray_r, interpolation="nearest")
 	ax.set_title("Training: %i" % label)
 ```
-#### Classification
+##### Classification
 ```python
 # flatten the images
 n_samples = len(digits.images)
@@ -401,13 +403,11 @@ print(f"Confusion matrix:\n{disp.confusion_matrix}")
 plt.show()
 ```
 
-####
-
-## Go
+### Go
 
 Go, également connu sous le nom de Golang, est un langage de programmation open-source créé par Google. Il se distingue par sa simplicité syntaxique, son efficacité d'exécution et sa prise en charge native de la programmation concurrente avec les "goroutines". Go est largement utilisé dans le développement backend, les services web, les applications cloud et les outils en ligne de commande en raison de sa simplicité, de sa rapidité et de sa robustesse. Il offre également une gestion automatique de la mémoire, réduisant les erreurs liées à la gestion de la mémoire.
 
-### GoLearn
+#### GoLearn
 
 GoLearn ([repositoryl](https://github.com/sjwhitworth/golearn)) est une bibliothèque d'apprentissage automatique open source développée en langage de programmation Go (ou Golang). Elle offre un ensemble de fonctionnalités pour la création, l'entraînement et l'évaluation de modèles d'apprentissage automatique dans l’écosystème Go. 
 #### Exemple de code
@@ -459,11 +459,11 @@ func main() {
 ```
 
 
-## Scala
+### Scala
 
 Scala est un langage de programmation polyvalent conçu pour la concision et la sécurité. Il s'exécute sur la machine virtuelle Java (JVM) et offre un mélange de fonctionnalités orientées objet et fonctionnelles, ce qui en fait un choix populaire pour les applications de traitement des données et la création de systèmes évolutifs.
 
-### Apache Spark MLlib
+#### Apache Spark MLlib
 
 Apache Spark MLlib est une bibliothèque d'apprentissage automatique open source conçue pour fonctionner avec le framework Apache Spark, en utilisant le langage de programmation Scala. L’intégration de la bibliothèque dans le framework Apache Spark permet de tirer parti de la mise en cluster et de la parallélisation pour traiter efficacement des volumes massifs de données.
 
@@ -496,3 +496,69 @@ println(s"Coefficients: ${lsvcModel.coefficients} Intercept: ${lsvcModel.interce
 | Performances                     | Performances solides pour les tâches de base | Performances correctes, mais pas aussi performant que TensorFlow | Performances exceptionnelles, idéales pour l'apprentissage en profondeur | Performances solides pour l'apprentissage automatique classique | Performances solides pour diverses tâches |
 | Déploiement                     | Facile à déployer en production grâce à sa simplicité | Peut être déployé, mais nécessite plus d'efforts que scikit-learn | Peut être déployé, mais nécessite une gestion plus complexe | Peut être déployé avec des efforts de déploiement C++ | Peut être déployé dans l'écosystème Spark |
 | Cas d'utilisation typiques       | Exploration de données, classification, régression, clustering | Arbres de décision, forêts aléatoires, classification | Réseaux de neurones, traitement du langage naturel, vision par ordinateur | Apprentissage automatique classique, optimisation numérique | Diverses tâches d'apprentissage automatique |
+
+
+## Expected features for our DSL
+
+**Tasks**
+- Load data
+- Scale data
+- Load a trained model
+- Train a model (with or without cross-validation)
+- Visualize the results
+
+**Entry data**
+- Tabular
+
+**Use case scenarios**
+- Train a model and visualize the results
+- Use a trained model (to make predictions) and visualize the results
+
+**Programs examples**
+
+Very simple program
+```
+data "myData" {
+   source = "C:/...";
+   label = "myClassToPredict"; // if not specified, the last column of data will be taken as label
+}
+
+model "myFirstModel" svm {
+   data_src = data.myData;
+   // all svm parameters have default values
+   // two parameters specific to our DSL are show_metrics (default value : true) and training_split (default value : 0.7)
+}
+```
+
+More complex program
+```
+data "myData" {
+   source = "C:/...";
+   label = "myClassToPredict";
+   drop = ["unusedFeature1", "unusedFeature2"];
+   scaler = minMax;
+}
+
+model "myFirstModel" svm {
+   data_src = data.myData;
+}
+
+model "mySecondModel" svm {
+   data_src = data.myData;
+   cross_validation = 5;
+   // svm specific parameters
+   C = 0.9;
+   kernel = linear;
+   gamma = auto;
+}
+
+model "myAlreadyTrainedModel" svm {
+   data_src = data.myData;
+   load = "C:/...";
+}
+
+// the metrics of all models will be printed
+```
+
+
+## Metamodel
