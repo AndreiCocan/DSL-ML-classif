@@ -1,0 +1,15 @@
+{
+    "projectName": "NeoMl",
+    "languages": [{
+        "id": "neo-ml",
+        "grammar": "src/language/neo-ml.langium",
+        "fileExtensions": [".neoml"],
+        "textMate": {
+            "out": "syntaxes/neo-ml.tmLanguage.json"
+        },
+        "monarch": {
+            "out": "syntaxes/neo-ml.monarch.ts"
+        }
+    }],
+    "out": "src/language/generated"
+}
