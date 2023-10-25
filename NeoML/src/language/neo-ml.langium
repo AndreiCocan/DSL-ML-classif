@@ -31,7 +31,7 @@ Trainer:
     'trainer' '{'
         'data' '=' DataRef
         ('show_metrics' '=' show_metrics=("true" | "false"))?
-        'model' '=' ModelRef
+        'model' '=' AlgoRef
     '}';
 
 hidden terminal WS: /\s+/;
