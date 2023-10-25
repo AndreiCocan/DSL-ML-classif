@@ -552,12 +552,12 @@ println(s"Coefficients: ${lsvcModel.coefficients} Intercept: ${lsvcModel.interce
 
 Very simple program
 ```
-data "myData" {
+data myData {
    source = "C:/...";
    label = "myClassToPredict"; // if not specified, the last column of data will be taken as label
 }
 
-model "myFirstModel" svm {
+model myFirstModel svm {
    data_src = data.myData;
    // all svm parameters have default values
    // two parameters specific to our DSL are show_metrics (default value : true) and training_split (default value : 0.7)
@@ -566,18 +566,18 @@ model "myFirstModel" svm {
 
 More complex program
 ```
-data "myData" {
+data myData {
    source = "C:/...";
    label = "myClassToPredict";
    drop = ["unusedFeature1", "unusedFeature2"];
    scaler = minMax;
 }
 
-model "myFirstModel" svm {
+model myFirstModel svm {
    data_src = data.myData;
 }
 
-model "mySecondModel" svm {
+model mySecondModel svm {
    data_src = data.myData;
    cross_validation = 5;
    // svm specific parameters
@@ -586,7 +586,7 @@ model "mySecondModel" svm {
    gamma = auto;
 }
 
-model "myAlreadyTrainedModel" svm {
+model myAlreadyTrainedModel svm {
    data_src = data.myData;
    load = "C:/...";
 }
