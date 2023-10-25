@@ -1,7 +1,7 @@
 grammar NeoML
 
-entry ENTRY:
-    (all_data+=Data | all_trainers+=Trainer | all_models+=Model)*;
+entry Model:
+    (all_data+=Data | all_trainers+=Trainer | all_algos+=Algo)*;
 
 Data:
     'data' name=ID "{" 
@@ -14,18 +14,18 @@ Data:
 DataRef:
     'data.'name=ID;
 
-Model:
+Algo:
     SVM;
 
 SVM:
-    'model' name=ID 'svm' '{'
+    'algo' name=ID 'svm' '{'
         ('C' '=' C=PERCENTAGE)?
-        ('kernel' '=' kernel=("gamma" | "auto"))?
+        ('kernel' '=' kernel=("linear" | "poly" | "rbf" | "sigmoid" | "precomputed"))?
 
     '}';
 
-ModelRef:
-    'model.'name=ID;
+AlgoRef:
+    'algo.'name=ID;
 
 Trainer:
     'trainer' '{'
