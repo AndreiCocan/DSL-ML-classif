@@ -29,9 +29,10 @@ AlgoRef:
 
 Trainer:
     'trainer' '{'
-        'data' '=' DataRef
+        'data' '=' data_ref=DataRef
+        'model' '=' algo_ref=AlgoRef
+        'train_test_split' '=' train_test_split=PERCENTAGE?
         ('show_metrics' '=' show_metrics=("true" | "false"))?
-        'model' '=' AlgoRef
     '}';
 
 hidden terminal WS: /\s+/;
