@@ -2,9 +2,7 @@ import type { ValidationAcceptor, ValidationChecks } from 'langium';
 import type { NeoMlAstType, Model } from './generated/ast.ts';
 import type { NeoMlServices } from './neo-ml-module.ts';
 
-/**
- * Register custom validation checks.
- */
+
 export function registerValidationChecks(services: NeoMlServices) {
     const registry = services.validation.ValidationRegistry;
     const validator = services.validation.NeoMlValidator;
@@ -17,9 +15,7 @@ export function registerValidationChecks(services: NeoMlServices) {
     registry.register(checks, validator);
 }
 
-/**
- * Implementation of custom validations.
- */
+
 export class NeoMlValidator {
 
     checkUniqueDataNames(model: Model, accept: ValidationAcceptor): void {
