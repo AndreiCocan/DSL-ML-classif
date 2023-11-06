@@ -14,16 +14,17 @@ export const generateAction = async (fileName: string, opts: GenerateOptions): P
     console.log(chalk.green(`JavaScript code generated successfully: ${generatedFilePath}`));
 };
 
+
 export type GenerateOptions = {
     destination?: string;
 }
 
-export default function(): void {
+export default function main(): void {
     const program = new Command();
 
     program
         // eslint-disable-next-line @typescript-eslint/no-var-requires
-        .version(require('../../package.json').version);
+        //.version(require('../../package.json').version);
 
     const fileExtensions = NeoMLLanguageMetaData.fileExtensions.join(', ');
     program
@@ -35,3 +36,5 @@ export default function(): void {
 
     program.parse(process.argv);
 }
+
+main()

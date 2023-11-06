@@ -14,13 +14,14 @@ export function generateClassifier(model: Model, filePath: string, destination: 
 
     
     
-    fileNode.append('import sklearn import *', NL);
-    fileNode.append('import panda import *', NL);
+    fileNode.append('import sklearn', NL);
+    fileNode.append('import pandas as pd', NL);
+    fileNode.append(NL);
 
-    const all_data: Object[] = generateData(model.all_data,);
+    generateData(model.all_data,fileNode);
     const all_trainers: Object[] = generateTrainers(model.all_trainers,model.all_algos,fileNode);
 
-    all_data;
+
     all_trainers;
 
     if (!fs.existsSync(data.destination)) {
@@ -31,20 +32,51 @@ export function generateClassifier(model: Model, filePath: string, destination: 
 }
 
 
-function generateData(data: Data[]): Object[] { 
-    return data
+function generateData(data: Data[],fileNode: CompositeGeneratorNode) { 
+    data.forEach((d,index) =>{
+
+        //data.source: string
+        fileNode.append(d.name,' = pd.readcsv("',d.source,'")', NL, NL);
+
+        //data.label: string
+        if (d.label != null){
+            fileNode.append(d.name,'_Y',' = ',d.name,'[',d.label!,']',NL);
+            d.drop.push(d.label!)
+
+        }else{
+            fileNode.append(d.name,'_Y',' = ',d.name,'.iloc[:,-1:]',NL);
+            fileNode.append(d.name,' = ',d.name,'.iloc[:, :-1]',NL, NL);
+        }
+
+        //data.drop: Array<string>
+        if (d.drop.length>0){
+            fileNode.append(d.name,' = ',d.name,'.drop(columns=["',d.drop.join('", "'),'"])',NL, NL);
+        }
+
+        //data.scaler: string
+        if (d.scaler != null){
+            fileNode.append(d.name,'_scaler = sklearn.',d.scaler!,'Scaler()',NL);
+            fileNode.append(d.name,' = ',d.name,'_scaler.fit_transform(',d.name,')',NL, NL);
+        }
+    })
 
 }
 
 
 function generateTrainers(trainers: Trainer[],algos: Algo[],fileNode: CompositeGeneratorNode): Object[] { 
-    trainers.forEach(trainer => generateTrainerBlock(trainer,fileNode))
+    trainers.forEach(trainer => generateTrainerBlock(trainer,algos,fileNode))
     
     return trainers
 
 }
 
-function generateTrainerBlock(trainer: Trainer, fileNode: CompositeGeneratorNode) {
 
-    fileNode.append('X_train, X_test, y_train, y_test=  train_test_split(X, Ynpm run build , test_size=',trainer.train_test_split,')',NL)
+function generateTrainerBlock(trainer: Trainer,algos: Algo[], fileNode: CompositeGeneratorNode) {
+    
+    //data.train_test_split: string
+    var split_percent = trainer.train_test_split != null ? trainer.train_test_split : 'None';
+    fileNode.append('X_train, X_test, y_train, y_test =  sklearn.train_test_split(X, Y , test_size = ',split_percent,')',NL);
+
+
+
 }
