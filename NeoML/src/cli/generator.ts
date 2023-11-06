@@ -40,7 +40,7 @@ function generateData(data: Data[],fileNode: CompositeGeneratorNode) {
 
         //data.label: string
         if (d.label != null){
-            fileNode.append(d.name,'_Y',' = ',d.name,'[',d.label!,']',NL);
+            fileNode.append(d.name,'_Y',' = ',d.name,'["',d.label!,'"]',NL);
             d.drop.push(d.label!)
 
         }else{
