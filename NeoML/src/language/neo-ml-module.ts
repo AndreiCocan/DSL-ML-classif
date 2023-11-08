@@ -1,6 +1,6 @@
 import type { DefaultSharedModuleContext, LangiumServices, LangiumSharedServices, Module, PartialLangiumServices } from 'langium';
 import { createDefaultModule, createDefaultSharedModule, inject } from 'langium';
-import { NeoMlGeneratedModule, NeoMlGeneratedSharedModule } from './generated/module.js';
+import { NeoMLGeneratedModule, NeoMlGeneratedSharedModule } from './generated/module.js';
 import { NeoMlValidator, registerValidationChecks } from './neo-ml-validator.js';
 
 /**
@@ -54,7 +54,7 @@ export function createNeoMlServices(context: DefaultSharedModuleContext): {
     );
     const NeoMl = inject(
         createDefaultModule({ shared }),
-        NeoMlGeneratedModule,
+        NeoMLGeneratedModule,
         NeoMlModule
     );
     shared.ServiceRegistry.register(NeoMl);
