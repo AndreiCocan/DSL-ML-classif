@@ -1,6 +1,6 @@
-import type { ValidationAcceptor, ValidationChecks } from 'langium';
-import type { NeoMlAstType, Model } from './generated/ast.ts';
-import type { NeoMlServices } from './neo-ml-module.ts';
+import type { ValidationAcceptor} from 'langium';
+import type {  Model } from './generated/ast.js';
+import type { NeoMlServices } from './neo-ml-module.js';
 
 
 export function registerValidationChecks(services: NeoMlServices) {
