@@ -94,14 +94,14 @@ function generateKNN(knn: KNN, fileNode: CompositeGeneratorNode){
     
     //knn.n_neighbors: int
     if(knn.n_neighbors != null){
-        fileNode.append('n_neighbors = "',knn.n_neighbors!,'"');
+        fileNode.append('n_neighbors = ',String(knn.n_neighbors!));
         args_number ++;
     }
 
     //knn.weights: string
     if(knn.weights != null){
         if(args_number>0) fileNode.append(', ');
-        fileNode.append('weights = ',knn.weights!);
+        fileNode.append('weights = "',knn.weights!,'"');
         args_number ++;
     }
 
@@ -114,9 +114,9 @@ function generateMLP(mlp: MLP, fileNode: CompositeGeneratorNode){
 
     //var args_number = 0;
     
-    //mlp.hidden_layer_sizes: float
+    //mlp.hidden_layer_sizes: int
     if(mlp.hidden_layer_sizes != null){
-        fileNode.append('hidden_layer_sizes = "',mlp.hidden_layer_sizes !,'"');
+        fileNode.append('hidden_layer_sizes = ',String(mlp.hidden_layer_sizes!));
         //args_number ++;
     }
 
@@ -139,14 +139,14 @@ function generateDT(dt: DecisionTree, fileNode: CompositeGeneratorNode){
     //dt.max_depth : int
     if(dt.max_depth != null){
         if(args_number>0) fileNode.append(', ');
-        fileNode.append('max_depth = ',dt.max_depth!);
+        fileNode.append('max_depth = ',String(dt.max_depth!));
         args_number ++;
     }
 
     //dt.splitter : string
     if(dt.splitter!= null){
         if(args_number>0) fileNode.append(', ');
-        fileNode.append('splitter = ',dt.splitter!);
+        fileNode.append('splitter = "',dt.splitter!,'"');
         args_number ++;
     }
 

@@ -57,7 +57,7 @@ terminal SCALER: /MinMax|Standard|AbsMax/;
 terminal ID: /[a-zA-Z][\w]*/;
 terminal STRING: /"[^"]*"|'[^']*'/;
 terminal PERCENTAGE: /(0\.\d+)|(1\.0)/;
-terminal INT: /\d+/;
+terminal INT: /[0-9]+/;
 
 hidden terminal ML_COMMENT: /\/\*[\s\S]*?\*\//;
 hidden terminal SL_COMMENT: /\/\/[^\n\r]*/;
