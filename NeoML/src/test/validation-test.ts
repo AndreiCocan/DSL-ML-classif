@@ -129,6 +129,40 @@ describe('Test illegal models', () => {
         }
         `)
     });
+
+    test('Trainer references a non existing data block', async() => {
+        await assertModelErrors(`
+        data myData {
+            source = "C:/helloData"
+        }
+         
+        algo mySvmModel svm {
+           C = 0.0
+        }
+         
+        trainer {
+            data = data.helloData
+            model = algo.mySvmModel
+        }
+        `)
+    });
+
+    test('Trainer references a non existing algo block', async() => {
+        await assertModelErrors(`
+        data myData {
+            source = "C:/helloData"
+        }
+         
+        algo mySvmModel svm {
+           C = 0.0
+        }
+         
+        trainer {
+            data = data.myData
+            model = algo.myFirstModel
+        }
+        `)
+    });
 });
 
 
