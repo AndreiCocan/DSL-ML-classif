@@ -10,13 +10,17 @@ import { NodeFileSystem } from 'langium/node';
 export const generateAction = async (fileName: string, opts: GenerateOptions): Promise<void> => {
     const services = createNeoMlServices(NodeFileSystem).NeoMl;
     const model = await extractAstNode<Model>(fileName, services);
-    const generatedFilePath = generateClassifier(model, fileName, opts.destination);
-    console.log(chalk.green(`JavaScript code generated successfully: ${generatedFilePath}`));
+    const generatedFilePath = generateClassifier(model, fileName, opts.destination, opts.language);
+    if(generatedFilePath != ""){
+        console.log(chalk.green(`JavaScript code generated successfully: ${generatedFilePath}`));
+    }
+        
 };
 
 
 export type GenerateOptions = {
     destination?: string;
+    language?: string;
 }
 
 export default function main(): void {
@@ -31,6 +35,7 @@ export default function main(): void {
         .command('generate')
         .argument('<file>', `source file (possible file extensions: ${fileExtensions})`)
         .option('-d, --destination <dir>', 'destination directory of generating')
+        .option('-l, --language <lang>', "'R' or 'Python'")
         .description('generates JavaScript code that prints "Hello, {name}!" for each greeting in a source file')
         .action(generateAction);
 
