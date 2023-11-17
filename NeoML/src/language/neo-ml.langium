@@ -21,7 +21,6 @@ SVM:
     'algo' name=ID 'svm' '{'
         ('C' '=' C=PERCENTAGE)?
         ('kernel' '=' kernel=("linear" | "poly" | "rbf" | "sigmoid" | "precomputed"))?
-
     '}';
 
 KNN:
@@ -49,7 +48,7 @@ Trainer:
     'trainer' '{'
         'data' '=' data_ref=DataRef
         'model' '=' algo_ref=AlgoRef
-        'train_test_split' '=' train_test_split=PERCENTAGE?
+        ('train_test_split' '=' train_test_split=PERCENTAGE)?
         ('show_metrics' '=' show_metrics=("true" | "false"))?
     '}';
 
