@@ -1,0 +1,31 @@
+data myData {
+   source = "Iris.csv"
+   label = "Species"
+   //drop = "unusedFeature1" "unusedFeature2"
+   scaler = MinMax
+}
+
+algo myFirstModel svm {
+   C = 1.0
+   kernel = linear
+}
+
+algo mySecondModel knn {
+   n_neighbors = 8
+   weights = distance
+}
+
+algo myThirdModel decisionTree {
+  
+}
+
+algo myMLPModel mlp {
+   hidden_layer_sizes = 100
+}
+
+trainer {
+    data = data.myData
+    model = algo.myFirstModel
+    train_test_split=0.5
+    show_metrics = false
+}

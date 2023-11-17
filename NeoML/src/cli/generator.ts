@@ -1,4 +1,4 @@
-import type { Model, Data, Algo, Trainer } from '../language/generated/ast.js';
+import { Model, Data, Algo, Trainer,SVM, isSVM } from '../language/generated/ast.js';
 import * as fs from 'node:fs';
 import { CompositeGeneratorNode, NL, toString } from 'langium';
 import * as path from 'node:path';
@@ -14,15 +14,13 @@ export function generateClassifier(model: Model, filePath: string, destination: 
 
     
     
-    fileNode.append('import sklearn', NL);
+    fileNode.append('from sklearn import *', NL);
     fileNode.append('import pandas as pd', NL);
     fileNode.append(NL);
 
     generateData(model.all_data,fileNode);
-    const all_trainers: Object[] = generateTrainers(model.all_trainers,model.all_algos,fileNode);
-
-
-    all_trainers;
+    generateAlgos(model.all_algos,fileNode);
+    generateTrainers(model.all_trainers,fileNode);
 
     if (!fs.existsSync(data.destination)) {
         fs.mkdirSync(data.destination, { recursive: true });
@@ -36,7 +34,7 @@ function generateData(data: Data[],fileNode: CompositeGeneratorNode) {
     data.forEach((d,index) =>{
 
         //data.source: string
-        fileNode.append(d.name,' = pd.readcsv("',d.source,'")', NL, NL);
+        fileNode.append(d.name,' = pd.read_csv("',d.source,'")', NL, NL);
 
         //data.label: string
         if (d.label != null){
@@ -44,7 +42,7 @@ function generateData(data: Data[],fileNode: CompositeGeneratorNode) {
             d.drop.push(d.label!)
 
         }else{
-            fileNode.append(d.name,'_Y',' = ',d.name,'.iloc[:,-1:]',NL);
+            fileNode.append(d.name,'_Y',' = ',d.name,'.iloc[:,-1]',NL);
             fileNode.append(d.name,' = ',d.name,'.iloc[:, :-1]',NL, NL);
         }
 
@@ -55,7 +53,7 @@ function generateData(data: Data[],fileNode: CompositeGeneratorNode) {
 
         //data.scaler: string
         if (d.scaler != null){
-            fileNode.append(d.name,'_scaler = sklearn.',d.scaler!,'Scaler()',NL);
+            fileNode.append(d.name,'_scaler = preprocessing.',d.scaler!,'Scaler()',NL);
             fileNode.append(d.name,' = ',d.name,'_scaler.fit_transform(',d.name,')',NL, NL);
         }
     })
@@ -63,20 +61,41 @@ function generateData(data: Data[],fileNode: CompositeGeneratorNode) {
 }
 
 
-function generateTrainers(trainers: Trainer[],algos: Algo[],fileNode: CompositeGeneratorNode): Object[] { 
-    trainers.forEach(trainer => generateTrainerBlock(trainer,algos,fileNode))
-    
-    return trainers
-
+function generateAlgos(algos: Algo[], fileNode: CompositeGeneratorNode){
+    algos.forEach((algo,index) => {
+        if(isSVM(algo)) generateSVM(algo,fileNode);
+    })
 }
 
-
-function generateTrainerBlock(trainer: Trainer,algos: Algo[], fileNode: CompositeGeneratorNode) {
+function generateSVM(svm: SVM, fileNode: CompositeGeneratorNode){
+    fileNode.append(svm.name, ' = svm.SVC(');
+    var args_number = 0;
     
-    //data.train_test_split: string
-    var split_percent = trainer.train_test_split != null ? trainer.train_test_split : 'None';
-    fileNode.append('X_train, X_test, y_train, y_test =  sklearn.train_test_split(X, Y , test_size = ',split_percent,')',NL);
+    //smv.kernel: string
+    if(svm.kernel != null){
+        fileNode.append('kernel = "',svm.kernel!,'"');
+        args_number ++;
+    }
 
+    //svm.C: float
+    if(svm.C != null){
+        if(args_number>0) fileNode.append(', ');
+        fileNode.append('C = ',svm.C!);
+        args_number ++;
+    }
 
-
+    fileNode.append(')',NL, NL);
 }
+
+function generateTrainers(trainers: Trainer[],fileNode: CompositeGeneratorNode) { 
+    trainers.forEach(trainer => {
+        
+        fileNode.append(trainer.data_ref.name,'_X_train, ', trainer.data_ref.name,'_X_test, ', trainer.data_ref.name,'_Y_train, ', trainer.data_ref.name,'_Y_test = model_selection.train_test_split(', trainer.data_ref.name,', ', trainer.data_ref.name, '_Y, ', 'test_size = ',trainer.train_test_split,')',NL);
+        fileNode.append(trainer.algo_ref.name, '.fit(',trainer.data_ref.name,'_X_train',', ',trainer.data_ref.name,'_Y_train)', NL, NL);
+
+        if(trainer.show_metrics){
+            fileNode.append('print("Accuracy score : " + str(metrics.accuracy_score(',trainer.data_ref.name,'_Y_test, ',trainer.algo_ref.name,'.predict(',trainer.data_ref.name,'_X_test))))')
+        }
+    })  
+}
+

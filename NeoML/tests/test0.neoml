@@ -1,12 +1,13 @@
 data myData {
-   source = "C:/..."
-   label = "myClassToPredict"
-   drop = "unusedFeature1" "unusedFeature2"
+   source = "Iris.csv"
+   label = "Species"
+   //drop = "unusedFeature1" "unusedFeature2"
    scaler = MinMax
 }
 
 algo myFirstModel svm {
-   C = 0.0
+   C = 1.0
+   kernel = linear
 }
 
 algo mySecondModel knn {
