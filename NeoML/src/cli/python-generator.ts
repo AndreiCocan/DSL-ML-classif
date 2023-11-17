@@ -1,4 +1,4 @@
-import { Model, Data, Algo, Trainer,SVM, isSVM } from '../language/generated/ast.js';
+import { Model, Data, Algo, Trainer,SVM, KNN,MLP, isSVM, DecisionTree, isKNN, isMLP, isDecisionTree } from '../language/generated/ast.js';
 import * as fs from 'node:fs';
 import { CompositeGeneratorNode, NL, toString } from 'langium';
 import { extractDestinationAndName } from './cli-util.js';
@@ -23,7 +23,7 @@ export function generateClassifierPython(model: Model, filePath: string, destina
         fs.mkdirSync(data.destination, { recursive: true });
     }
     fs.writeFileSync(generatedFilePath, toString(fileNode));
-    
+
     return generatedFilePath;
 }
 
@@ -61,6 +61,9 @@ function generateData(data: Data[],fileNode: CompositeGeneratorNode) {
 function generateAlgos(algos: Algo[], fileNode: CompositeGeneratorNode){
     algos.forEach((algo,index) => {
         if(isSVM(algo)) generateSVM(algo,fileNode);
+        if(isKNN(algo)) generateKNN(algo,fileNode);
+        if(isMLP(algo)) generateMLP(algo,fileNode);
+        if(isDecisionTree(algo)) generateDT(algo,fileNode);
     })
 }
 
@@ -78,6 +81,72 @@ function generateSVM(svm: SVM, fileNode: CompositeGeneratorNode){
     if(svm.C != null){
         if(args_number>0) fileNode.append(', ');
         fileNode.append('C = ',svm.C!);
+        args_number ++;
+    }
+
+    fileNode.append(')',NL, NL);
+}
+
+function generateKNN(knn: KNN, fileNode: CompositeGeneratorNode){
+    fileNode.append(knn.name, ' = neighbors.KNeighborsClassifier(');
+
+    var args_number = 0;
+    
+    //knn.n_neighbors: int
+    if(knn.n_neighbors != null){
+        fileNode.append('n_neighbors = "',knn.n_neighbors!,'"');
+        args_number ++;
+    }
+
+    //knn.weights: string
+    if(knn.weights != null){
+        if(args_number>0) fileNode.append(', ');
+        fileNode.append('weights = ',knn.weights!);
+        args_number ++;
+    }
+
+    fileNode.append(')',NL, NL);
+}
+
+
+function generateMLP(mlp: MLP, fileNode: CompositeGeneratorNode){
+    fileNode.append(mlp.name, ' = neural_network.MLPClassifier(');
+
+    var args_number = 0;
+    
+    //mlp.hidden_layer_sizes: float
+    if(mlp.hidden_layer_sizes != null){
+        fileNode.append('hidden_layer_sizes = "',mlp.hidden_layer_sizes !,'"');
+        args_number ++;
+    }
+
+
+    fileNode.append(')',NL, NL);
+}
+
+function generateDT(dt: DecisionTree, fileNode: CompositeGeneratorNode){
+    fileNode.append(dt.name, ' = tree.DecisionTreeClassifier(');
+
+    var args_number = 0;
+    
+    //dt.criterion : string
+    if(dt.criterion != null){
+        fileNode.append('criterion = "',dt.criterion !,'"');
+        args_number ++;
+    }
+
+
+    //dt.max_depth : int
+    if(dt.max_depth != null){
+        if(args_number>0) fileNode.append(', ');
+        fileNode.append('max_depth = ',dt.max_depth!);
+        args_number ++;
+    }
+
+    //dt.splitter : string
+    if(dt.splitter!= null){
+        if(args_number>0) fileNode.append(', ');
+        fileNode.append('splitter = ',dt.splitter!);
         args_number ++;
     }
 
