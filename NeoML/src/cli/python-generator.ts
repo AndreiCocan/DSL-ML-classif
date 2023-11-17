@@ -112,12 +112,12 @@ function generateKNN(knn: KNN, fileNode: CompositeGeneratorNode){
 function generateMLP(mlp: MLP, fileNode: CompositeGeneratorNode){
     fileNode.append(mlp.name, ' = neural_network.MLPClassifier(');
 
-    var args_number = 0;
+    //var args_number = 0;
     
     //mlp.hidden_layer_sizes: float
     if(mlp.hidden_layer_sizes != null){
         fileNode.append('hidden_layer_sizes = "',mlp.hidden_layer_sizes !,'"');
-        args_number ++;
+        //args_number ++;
     }
 
 
