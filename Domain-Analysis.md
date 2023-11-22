@@ -627,7 +627,127 @@ trainer {
 ```
 This time, myData2 and myKnnModel are referenced in a second trainer, so they will be used. Here, only the metrics about the SVM model will be printed.
 
-
 ## Metamodel
 
 ![](metamodel.png)
+
+## Code generation with ChatGPT: success and limitations
+
+We gave this prompt to ChatGPT:
+
+> In order to do pieces of statements for machine learning in Python with scikit-learn, generate examples of programs for each of the following tasks :
+> 
+> 1 - load a CSV data file
+> 
+> 2 - load a CSV data file, part it between features and the labels column
+> 
+> 3 - idem as 2 but also dropping two columns: "unusedFeature1" and "unusedFeature2"
+> 
+> 4 - idem as 3 but also scaling data with MinMax scaler
+> 
+> 5 - idem as 2 and then train a SVM model with following parameters: C=1.0, kernel=sigmoid
+> 
+> 6 - idem as 5 visualize metrics about this trained model
+> 
+> 7 - idem as 5, but also load another CSV data file, train a KNN model with these data
+
+The answer:
+> Certainly! Here are example code snippets using scikit-learn to perform various tasks with machine learning:
+> #### 1. Load a CSV data file:
+> ```py
+> import pandas as pd
+> # Load CSV data into a DataFrame
+> data = pd.read_csv('your_data.csv')
+> ```
+> #### 2. Load a CSV data file, separate features and labels:
+> ```py
+> import pandas as pd
+> 
+> # Load CSV data into a DataFrame
+> data = pd.read_csv('your_data.csv')
+>
+> # Separate features and labels
+> features = data.drop('label_column_name', axis=1)
+> labels = data['label_column_name']
+> ```
+> #### 3. Separate features and labels, dropping two columns:
+> ```py
+> import pandas as pd
+>
+> # Load CSV data into a DataFrame
+> data = pd.read_csv('your_data.csv')
+>
+> # Drop 'unusedFeature1' and 'unusedFeature2'
+> data.drop(['unusedFeature1', 'unusedFeature2'], axis=1, inplace=True)
+>
+> # Separate features and labels
+> features = data.drop('label_column_name', axis=1)
+> labels = data['label_column_name']
+> ```
+> #### 4. Scale data with MinMaxScaler after dropping columns:
+> ```py
+> import pandas as pd
+> from sklearn.preprocessing import MinMaxScaler
+>
+> # Load CSV data into a DataFrame
+> data = pd.read_csv('your_data.csv')
+>
+> # Drop 'unusedFeature1' and 'unusedFeature2'
+> data.drop(['unusedFeature1', 'unusedFeature2'], axis=1, inplace=True)
+>
+> # Separate features and labels
+> features = data.drop('label_column_name', axis=1)
+> labels = data['label_column_name']
+>
+> # Scale features using MinMaxScaler
+> scaler = MinMaxScaler()
+> scaled_features = scaler.fit_transform(features)
+> ```
+> #### 5. Train an SVM model with specified parameters:
+> ```py
+> from sklearn.svm import SVC
+> import pandas as pd
+>
+> # Load CSV data into a DataFrame
+> data = pd.read_csv('your_data.csv')
+>
+> # Separate features and labels
+> features = data.drop('label_column_name', axis=1)
+> labels = data['label_column_name']
+>
+> # Train SVM model
+> svm = SVC(C=1.0, kernel='sigmoid')
+> svm.fit(features, labels)
+> ```
+> #### 6. Visualize metrics for the trained SVM model:
+> ```py
+> import matplotlib.pyplot as plt
+> from sklearn.metrics import plot_confusion_matrix
+>
+> # Assuming 'svm' is already trained
+>
+> # Visualize confusion matrix
+> plot_confusion_matrix(svm, features, labels)
+> plt.show()
+> ```
+> #### 7. Load another CSV data file, train a KNN model with this data:
+> ```py
+> from sklearn.neighbors import KNeighborsClassifier
+> import pandas as pd
+>
+> # Load another CSV data into a DataFrame
+> new_data = pd.read_csv('new_data.csv')
+>
+> # Separate features and labels for new data
+> new_features = new_data.drop('new_label_column_name', axis=1)
+> new_labels = new_data['new_label_column_name']
+>
+> # Train KNN model with new data
+> knn = KNeighborsClassifier()
+> knn.fit(new_features, new_labels)
+> ```
+>
+> These examples cover loading CSV data, preprocessing, training different models, and visualizing model metrics. You might need to replace `'your_data.csv'`, `'new_data.csv'`, column names, and parameters with your specific data and values.
+
+The code snippets provided generally work well by importing necessary modules and using appropriate variable names. However, some parts might not align with expectations, like assuming the SVM model is already trained in 6th section. This can be fixed with clearer prompts. The main challenge lies in users needing to give very specific details, like file paths and variable names. Also, without a clear structure, it might become confusing as users create more prompts, making it harder to refer back to previous steps or models they've trained. To make things smoother, using a DSL designed for these tasks would help. Additionally, unlike a program made with a dedicated language, there's no feature here to save prompts like you can in a system built on a specific grammar.
+We didn't show examples for other languages and libraries, but the outcomes were alike.
