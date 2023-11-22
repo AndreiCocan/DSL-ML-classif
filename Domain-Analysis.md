@@ -148,8 +148,8 @@ public class LinearRegressionExample {
 
 For classification tasks in machine learning, C++ offers several advantages: Performance, Control, Integration. The most commonly used libraries are TensorFlow, PyTorch, DLIB, Shark, and MLPack. Shark is a high-performance open-source library for machine learning and optimization, written in C++. It is designed to provide a wide range of tools and algorithms for various machine learning tasks, including classification, regression, clustering, dimensionality reduction, and much more.
 
-#### Neurol network example
-Source : [shark-ml doc](http://image.diku.dk/shark/doxygen_pages/html/_f_f_n_n_basic_tutorial_8cpp_source.html ))
+#### Neural network example
+Source : [shark-ml doc](http://image.diku.dk/shark/doxygen_pages/html/_f_f_n_n_basic_tutorial_8cpp_source.html )
 <details>
 	<summary>Open code example for neural network</summary>
 
@@ -201,7 +201,7 @@ network.setParameterVector(optimizer.solution().point);
 </details>
 
 #### kNN example
-Source : [shark-ml doc](http://image.diku.dk/shark/doxygen_pages/html/_k_n_n_tutorial_8cpp_source.html ))
+Source : [shark-ml doc](http://image.diku.dk/shark/doxygen_pages/html/_k_n_n_tutorial_8cpp_source.html )
 
 <details>
 	<summary>Open code example for kNN</summary>
@@ -262,7 +262,7 @@ Source : [shark-ml doc](http://image.diku.dk/shark/doxygen_pages/html/_k_n_n_tut
 </details>
 
 #### SVM example, with cross-validation
-Source : [shark-ml doc](http://image.diku.dk/shark/doxygen_pages/html/_c_svm_grid_search_tutorial_8cpp_source.html ))
+Source : [shark-ml doc](http://image.diku.dk/shark/doxygen_pages/html/_c_svm_grid_search_tutorial_8cpp_source.html )
 
 <details>
 	<summary>Open code example for SVM with cross validation</summary>
@@ -348,7 +348,7 @@ Python is a versatile interpreted programming language, renowned for its simple 
 Scikit-learn is one of the most popular Python libraries for machine learning. It provides a wide range of tools and algorithms for data processing, supervised and unsupervised learning, dimensionality reduction, model selection, model evaluation, and much more. Scikit-learn is designed to be user-friendly, yet it remains powerful and flexible for solving complex machine learning tasks. It is used in various fields, including data analysis, image classification, anomaly detection, bioinformatics, finance, and many others.
 
 ##### Code example for recognition of handwritten digits
-Source : [scikit-learn doc](https://scikit-learn.org/stable/auto_examples/classification/plot_digits_classification.html#sphx-glr-auto-examples-classification-plot-digits-classification-py))
+Source : [scikit-learn doc](https://scikit-learn.org/stable/auto_examples/classification/plot_digits_classification.html#sphx-glr-auto-examples-classification-plot-digits-classification-py)
 
 <details>
 	<summary>Open code example</summary>
@@ -430,7 +430,7 @@ Go, also known as Golang, is an open-source programming language created by Goog
 "GoLearn ([repository](https://github.com/sjwhitworth/golearn)) is an open-source machine learning library developed in the Go (or Golang) programming language. It provides a set of features for creating, training, and evaluating machine learning models within the Go ecosystem."
 
 #### Code example
-Source : [golang doc](https://golangdocs.com/golang-machine-learning-libraries))
+Source : [golang doc](https://golangdocs.com/golang-machine-learning-libraries)
 <details>
 	<summary>Open code example</summary>
 
@@ -537,8 +537,8 @@ println(s"Coefficients: ${lsvcModel.coefficients} Intercept: ${lsvcModel.interce
 **Tasks**
 - Load data
 - Scale data
-- Load a trained model
-- Train a model (with or without cross-validation)
+- Define parameters for an algo
+- Train a model (specifying algo and data to use)
 - Visualize the results
 
 **Entry data**
@@ -546,7 +546,7 @@ println(s"Coefficients: ${lsvcModel.coefficients} Intercept: ${lsvcModel.interce
 
 **Use case scenarios**
 - Train a model and visualize the results
-- Use a trained model (to make predictions) and visualize the results
+- Train several models that may reference different or same data and algos (that are previously defined)
 
 **Programs examples**
 
@@ -556,43 +556,76 @@ data myData {
    source = "C:/...";
    label = "myClassToPredict"; // if not specified, the last column of data will be taken as label
 }
-
-model myFirstModel svm {
-   data_src = data.myData;
-   // all svm parameters have default values
-   // two parameters specific to our DSL are show_metrics (default value : true) and training_split (default value : 0.7)
-}
 ```
+This program is valid but won't do anything as we don't ask to train any model.
 
-More complex program
+A complete program
 ```
 data myData {
-   source = "C:/...";
-   label = "myClassToPredict";
-   drop = ["unusedFeature1", "unusedFeature2"];
-   scaler = minMax;
+	source = "C:/helloData"
+        label = "myClassToPredict"
+	drop = ["unusedFeature1", "unusedFeature2"];
+	scaler = minMax;
 }
 
-model myFirstModel svm {
-   data_src = data.myData;
+data myData2 {
+	source = "C:/holaData"
+}
+         
+algo mySvmModel svm {
+	C = 0.0
+	kernel = sigmoid
 }
 
-model mySecondModel svm {
-   data_src = data.myData;
-   cross_validation = 5;
-   // svm specific parameters
-   C = 0.9;
-   kernel = linear;
-   gamma = auto;
+algo myKnnModel knn {
+	n_neighbors = 8
+	weights = distance
 }
-
-model myAlreadyTrainedModel svm {
-   data_src = data.myData;
-   load = "C:/...";
+         
+trainer {
+	data = data.myData
+        model = algo.mySvmModel
+        train_test_split = 0.7
 }
-
-// the metrics of all models will be printed
 ```
+Only the referenced data and algo blocks in a trainer will be used: in this case the myData and mySvmModel blocks. Blocks myData2 and myKnnModel aren't referenced in any trainer so they won't be taken into account.
+
+A more complex program that train several models
+```
+data myData {
+	source = "C:/helloData"
+        label = "myClassToPredict"
+	drop = ["unusedFeature1", "unusedFeature2"];
+	scaler = minMax;
+}
+
+data myData2 {
+	source = "C:/holaData"
+}
+         
+algo mySvmModel svm {
+	C = 0.0
+	kernel = sigmoid
+}
+
+algo myKnnModel knn {
+	n_neighbors = 8
+	weights = distance
+}
+         
+trainer {
+	data = data.myData
+        model = algo.mySvmModel
+        train_test_split = 0.7
+        show_metrics = true
+}
+
+trainer {
+	data = data.myData2
+	model = algo.myKnnModel
+}
+```
+This time, myData2 and myKnnModel are referenced in a second trainer, so they will be used. Here, only the metrics about the SVM model will be printed.
 
 
 ## Metamodel
