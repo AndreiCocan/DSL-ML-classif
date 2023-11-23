@@ -1,0 +1,32 @@
+data myData {
+	source = "C:/helloData"
+        label = "myClassToPredict"
+	drop = ["unusedFeature1", "unusedFeature2"];
+	scaler = minMax;
+}
+
+data myData2 {
+	source = "C:/holaData"
+}
+         
+algo mySvmModel svm {
+	C = 0.0
+	kernel = sigmoid
+}
+
+algo myKnnModel knn {
+	n_neighbors = 8
+	weights = distance
+}
+         
+trainer {
+	data = data.myData
+        model = algo.mySvmModel
+        train_test_split = 0.7
+        show_metrics = true
+}
+
+trainer {
+	data = data.myData2
+	model = algo.myKnnModel
+}

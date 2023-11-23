@@ -1,0 +1,4 @@
+algo myKnnModel knn {
+	n_neighbors = 8
+	weights = distance
+}

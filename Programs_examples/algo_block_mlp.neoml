@@ -1,0 +1,3 @@
+algo myMlpModel mlp {
+	hidden_layer_sizes = 5
+}

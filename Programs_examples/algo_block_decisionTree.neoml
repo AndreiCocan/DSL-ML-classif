@@ -1,0 +1,5 @@
+algo myDecisionTreeModel decisionTree {
+	criterion = entropy
+	splitter = random
+	max_depth = 10
+}

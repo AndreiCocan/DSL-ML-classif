@@ -1,0 +1,18 @@
+data myData {
+	source = "C:/helloData"
+        label = "myClassToPredict"
+	drop = ["unusedFeature1", "unusedFeature2"];
+	scaler = minMax;
+}
+         
+algo mySvmModel svm {
+	C = 0.0
+	kernel = sigmoid
+}
+         
+trainer {
+	data = data.myData
+        model = algo.mySvmModel
+        train_test_split = 0.7
+        show_metrics = true
+}

@@ -1,0 +1,11 @@
+data myData {
+	source = "C:/helloData"
+}
+         
+algo mySvmModel svm {
+}
+         
+trainer {
+	data = data.myData
+	model = algo.mySvmModel
+}

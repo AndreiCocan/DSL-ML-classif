@@ -1,0 +1,4 @@
+algo mySvmModel svm {
+	C = 0.0
+	kernel = sigmoid
+}
