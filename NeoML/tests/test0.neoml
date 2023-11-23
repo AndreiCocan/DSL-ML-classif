@@ -1,5 +1,5 @@
 data myData {
-   source = "Iris.csv"
+   source = "tests/datasets/Iris.csv"
    label = "Species"
    //drop = "unusedFeature1" "unusedFeature2"
    scaler = MinMax
@@ -26,6 +26,6 @@ algo myMLPModel mlp {
 trainer {
     data = data.myData
     model = algo.myFirstModel
-    train_test_split=0.5
-    show_metrics = false
+    train_test_split=0.1
+    show_metrics = true
 }

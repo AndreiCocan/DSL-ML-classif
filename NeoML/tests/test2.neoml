@@ -1,0 +1,17 @@
+data myData {
+   source = "tests/datasets/random_dataset.csv"
+   label = "Class"
+   scaler = MinMax
+}
+
+algo mySecondModel knn {
+   n_neighbors = 8
+   weights = distance
+}
+
+trainer {
+    data = data.myData
+    model = algo.mySecondModel
+    train_test_split=0.2
+    show_metrics = true
+}
