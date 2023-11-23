@@ -38,7 +38,7 @@ DecisionTree:
 
 MLP:
     'algo' name=ID 'mlp' '{'
-        ('hidden_layer_sizes' '=' hidden_layer_sizes=INT)?
+        ('hidden_layer_sizes' '=' hidden_layer_sizes+=INT+)?
     '}';
 
 AlgoRef:

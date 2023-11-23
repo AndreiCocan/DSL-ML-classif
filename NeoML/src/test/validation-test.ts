@@ -44,7 +44,7 @@ describe('Test correct models', () => {
         }
 
         algo myMlpModel mlp {
-            hidden_layer_sizes = 5
+            hidden_layer_sizes = 7 5 7
         }
         `)
 
@@ -74,7 +74,9 @@ describe('Test correct models', () => {
         if(isMLP(model.all_algos[3])) {
             const myMLP = model.all_algos[3];
             expect(myMLP.name).toBe("myMlpModel");
-            expect(myMLP.hidden_layer_sizes).toBe(5);
+            expect(myMLP.hidden_layer_sizes[0]).toBe(7);
+            expect(myMLP.hidden_layer_sizes[1]).toBe(5);
+            expect(myMLP.hidden_layer_sizes[2]).toBe(7);
         }
     })
 
