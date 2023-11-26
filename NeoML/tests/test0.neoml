@@ -20,7 +20,7 @@ algo myThirdModel decisionTree {
 }
 
 algo myMLPModel mlp {
-   hidden_layer_sizes = 100
+   hidden_layer_sizes = 8
 }
 
 trainer {
