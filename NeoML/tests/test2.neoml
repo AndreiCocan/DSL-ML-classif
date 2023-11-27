@@ -1,7 +1,6 @@
 data myData {
    source = "tests/datasets/random_dataset.csv"
    label = "Class"
-   scaler = MinMax
 }
 
 algo mySecondModel knn {

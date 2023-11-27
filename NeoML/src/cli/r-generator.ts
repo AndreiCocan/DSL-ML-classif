@@ -45,31 +45,25 @@ function generateData(data: Data[],fileNode: CompositeGeneratorNode) {
             fileNode.append(d.name,'_X <- subset(',d.name,', select = -',d.label!,')', NL);
             fileNode.append(d.name,'_Y <- as.factor(',d.name,'$',d.label!,')',NL,NL);
         }else{
-            console.log(chalk.redBright('Unspecified label is not yet supported in R generator, occurred in data block', d.name));
-            // TO DO  
-            // fileNode.append(d.name,'_Y',' <- as.factor(',d.name,'[,ncol(',d.name,')])',NL);
-            /* previous line doesn't work, got this error at the end : Error in `contrasts<-`(`*tmp*`, value = contr.funs[1 + isOF[nn]]) : 
-            contrasts can be applied only to factors with 2 or more levels
-            Calls: svm ... model.matrix -> model.matrix.default -> contrasts<-
-            Exécution arrêtée*/
+            fileNode.append(d.name,'_X <- subset(',d.name,', select = -ncol(',d.name,'))', NL);
+            fileNode.append(d.name,'_Y',' <- as.factor(',d.name,'[,ncol(',d.name,')])',NL);
         }
 
-        // TO DO
         //data.scaler: string
-        /*if (d.scaler != null){
+        if (d.scaler != null){
             switch(d.scaler) {
                 case "Standard":
-                    fileNode.append(d.name,' <- scale(',d.name,')',NL, NL);
+                    fileNode.append(d.name,'_X <- scale(',d.name,'_X)',NL, NL);
                     break;
                 case "MinMax":
-                    fileNode.append('preprocess_range <- preProcess(',d.name,', method = "range")', NL);
-                    fileNode.append(d.name,' <- predict(preprocess_range, newdata = ', d.name,')', NL, NL);
+                    fileNode.append('preprocess_range <- preProcess(',d.name,'_X, method = "range")', NL);
+                    fileNode.append(d.name,'_X <- predict(preprocess_range, newdata = ', d.name,'_X)', NL, NL);
                     break;
                 case "AbsMax":
-                    fileNode.append(d.name, ' <- apply(',d.name,', 2, function(x) x / max(abs(x)))', NL, NL);
+                    fileNode.append(d.name, '_X <- apply(',d.name,'_X, 2, function(x) x / max(abs(x)))', NL, NL);
                     break;
             }
-        }*/
+        }
     })
 
 }
@@ -148,7 +142,6 @@ function generateKNN(knn: KNN, dataRefName: string, showMetrics: boolean, fileNo
     }
 }
 
-//nnet_model <- nnet(myData_Y_train ~ ., data = myData_X_train, size = 10, maxit = 100, linout = TRUE, trace = FALSE, maxNWts = 10000)
 function generateMLP(mlp: MLP, dataRefName: string, showMetrics: boolean, fileNode: CompositeGeneratorNode){
     fileNode.append(mlp.name, ' <- nnet(',dataRefName,'_Y_train ~ ., ', dataRefName, '_X_train');
 
@@ -167,16 +160,8 @@ function generateMLP(mlp: MLP, dataRefName: string, showMetrics: boolean, fileNo
     }
 }
 
-/*
-tree_model <- rpart(y_train ~ ., data = train_data, method = "class")
-tree_accuracy <- confusionMatrix(predict(tree_model, test_data), test_data$target_column)$overall["Accuracy"]
-print(paste("Decision Tree Accuracy:", tree_accuracy))
-*/
-
 function generateDT(dt: DecisionTree, dataRefName: string, showMetrics: boolean, fileNode: CompositeGeneratorNode){
     fileNode.append(dt.name, ' <- rpart(',dataRefName,'_Y_train ~ ., ',dataRefName, '_X_train, method = "class"');
-
-    // TO DO : adapt the parameters
     
     var args_number = 0;
 
