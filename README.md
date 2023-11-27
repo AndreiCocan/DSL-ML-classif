@@ -132,3 +132,14 @@ This time, myData2 and myKnnModel are referenced in a second trainer, so they wi
 
 ## Langium 
 
+### A Critical Examination of Langium: Challenges in DSL Development
+
+#### Introduction
+
+Embarking on the journey of crafting a Domain-Specific Language (DSL) for machine learning classification using Langium, an Eclipse-based framework, proved to be a mixed experience. While the tool demonstrated commendable attributes such as speed and user-friendly features, several notable shortcomings surfaced during our DSL development.
+
+#### Long-Term Viability of DSLs
+
+Expanding on the concern about the future relevance of DSLs, it's crucial to consider the evolving nature of software development practices. The advent of low-code and no-code platforms, coupled with the growing sophistication of AI, raises questions about the enduring importance of DSLs. Teams investing in DSL development tools like Langium should carefully evaluate whether the benefits they provide justify the effort, especially in comparison to emerging alternatives.
+
+Additionally, exploring ways in which AI can generate, complement and enhance DSLs could be a promising avenue for future development. Integrating DSLs with AI-driven solutions may present new opportunities for combining the strengths of both approaches.
