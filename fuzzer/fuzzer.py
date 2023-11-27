@@ -11,7 +11,7 @@ splitters = ["best", "random"]
 def random_string():
     return ''.join(random.choices(string.ascii_letters, k=random.randint(3, 8)))
 
-# Function to generate a valid Data block with end-of-line characters
+# Function to generate a valid Data block
 def generate_data():
     data_block = f"data {random_string()} {{\n    source = '{random_string()}'"
     if random.choice([True, False]):
@@ -23,7 +23,7 @@ def generate_data():
     data_block += "\n}"
     return data_block
 
-# Function to generate a valid Algo block with end-of-line characters
+# Function to generate a valid Algo block
 def generate_algo():
     algo_type = random.choice(["svm", "knn", "decisionTree", "mlp"])
     algo_block = f"algo {random_string()} {algo_type} {{\n"
@@ -36,9 +36,9 @@ def generate_algo():
     elif algo_type == "decisionTree":
         algo_block += f"    criterion = '{random.choice(criteria)}'\n" if random.choice([True, False]) else ""
         algo_block += f"    splitter = '{random.choice(splitters)}'\n" if random.choice([True, False]) else ""
-        algo_block += f"    max_depth = {random.randint(1, 10)}\n" if random.choice([True, False]) else ""
+        algo_block += f"    max_depth = {random.randint(5, 15)}\n" if random.choice([True, False]) else ""
     elif algo_type == "mlp":
-        algo_block += f"    hidden_layer_sizes = {' '.join([str(random.randint(1, 10)) for _ in range(random.randint(1, 3))])}\n" if random.choice([True, False]) else ""
+        algo_block += f"    hidden_layer_sizes = {' '.join([str(random.randint(4, 10)) for _ in range(random.randint(1, 3))])}\n" if random.choice([True, False]) else ""
     algo_block += "}"
     return algo_block
 
@@ -48,9 +48,6 @@ generated_algo_blocks = []
 
 # Function to generate a valid Trainer block referencing existing Data and Algo blocks
 def generate_trainer():
-    if not generated_data_blocks or not generated_algo_blocks:
-        return ""
-
     data_ref = random.choice(generated_data_blocks)
     algo_ref = random.choice(generated_algo_blocks)
 
@@ -63,8 +60,8 @@ def generate_trainer():
 # Function to generate a Model block with end-of-line characters
 def generate_model():
     model_block = ""
-    for _ in range(random.randint(1, 10)):
-        choice = random.choice([generate_data, generate_algo, generate_trainer])
+    for _ in range(random.randint(0, 6)):
+        choice = random.choice([generate_data, generate_algo])
         if choice == generate_data:
             data_block = generate_data()
             model_block += data_block + "\n\n"
@@ -77,12 +74,19 @@ def generate_model():
             # Extract algo block name and add to the list of generated algo blocks
             algo_name = algo_block.split()[1]
             generated_algo_blocks.append(algo_name)
-        else:
-            # Only generate a trainer if there are existing data and algo blocks
-            if generated_data_blocks and generated_algo_blocks:
-                model_block += generate_trainer() + "\n\n"
+
+    for _ in range(random.randint(0, 4)):
+        # Only generate a trainer if there are existing data and algo blocks
+        if generated_data_blocks and generated_algo_blocks:
+            model_block += generate_trainer() + "\n\n"
     return model_block
 
 # Generate a program using Model entry
 generated_program = generate_model()
-print(generated_program)
+
+file_id = random_string() + random_string()
+file_name = "./generated_programs/generated_" + file_id +".neoml"
+with open(file_name, "w") as file:
+    file.write(generated_program)
+
+print(f"Generated program saved in '{file_name}'")
