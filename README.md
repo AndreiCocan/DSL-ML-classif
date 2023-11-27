@@ -8,26 +8,25 @@ This report explores the following key aspects of the project :
 - The supported libraries and languages
 - Abstract syntax of our DSL
 - Examples of programs in action 
-- The instructions to run our language project
+- The instructions to run our project
 - The assessment of our different compilers 
 - Our user feedback on Langium 
 
 
 ## Supported libraries and languages
 
-The languages supported by our DSL are Python, utilizing the Scikit-learn library, and ???. 
-These choices were made to leverage the extensive capabilities and popularity of Scikit-learn in Python for machine learning tasks and ???.
-
+The languages supported by our DSL are Python, utilizing the Scikit-learn library, and R, using several libraries like e1071, rpart, class, caret. 
+These choices were made to leverage the extensive capabilities and popularity of Scikit-learn in Python for machine learning tasks and to harness the robustness and versatility of R's libraries.
 
 ## Abstract syntax
 
-### Expected features for our DSL
+### Selected features for our DSL
 
 **Tasks**
 - Load data
 - Scale data
-- Load a trained model
-- Train a model (with or without cross-validation)
+- Define parameters for an algo
+- Train a model (specifying algo and data to use)
 - Visualize the results
 
 **Entry data**
@@ -35,12 +34,13 @@ These choices were made to leverage the extensive capabilities and popularity of
 
 **Use case scenarios**
 - Train a model and visualize the results
-- Use a trained model (to make predictions) and visualize the results
+- Train several models that may reference different or same data and algos (that are previously defined)
 
 ### Metamodel
 
 ![](metamodel.png)
 
+A trainer has a Data block and an Algo block. Every algorithm available for model training inherits from the Algo class. Our emphasis lies on SVM, KNN, Decision Tree, and neural networks, offering substantial classification possibilities, considering their adjustable parameters.
 
 ## Programs in action 
 
