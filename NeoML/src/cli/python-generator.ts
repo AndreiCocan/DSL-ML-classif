@@ -116,7 +116,7 @@ function generateMLP(mlp: MLP, fileNode: CompositeGeneratorNode){
     
     //mlp.hidden_layer_sizes: int
     if(mlp.hidden_layer_sizes != null){
-        fileNode.append('hidden_layer_sizes = ',String(mlp.hidden_layer_sizes!));
+        fileNode.append('hidden_layer_sizes = ','[',String(mlp.hidden_layer_sizes.join(', ')),']');
         //args_number ++;
     }
 

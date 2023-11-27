@@ -149,7 +149,7 @@ function generateMLP(mlp: MLP, dataRefName: string, showMetrics: boolean, fileNo
     
     //mlp.hidden_layer_sizes: int
     if(mlp.hidden_layer_sizes != null){
-        fileNode.append(', size = ',String(mlp.hidden_layer_sizes!));
+        fileNode.append(', size = ',String(mlp.hidden_layer_sizes![0]));
         //args_number ++;
     }
 
