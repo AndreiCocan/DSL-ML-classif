@@ -1,5 +1,5 @@
-import type { ValidationAcceptor} from 'langium';
-import type {  Model } from './generated/ast.js';
+import type { ValidationAcceptor, ValidationChecks } from 'langium';
+import type { NeoMlAstType, Model } from './generated/ast.js';
 import type { NeoMlServices } from './neo-ml-module.js';
 
 
