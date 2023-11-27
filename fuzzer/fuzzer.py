@@ -7,13 +7,21 @@ kernels = ["linear", "poly", "rbf", "sigmoid", "precomputed"]
 criteria = ["gini", "entropy", "log_loss"]
 splitters = ["best", "random"]
 
+# Track generated data and algo block names
+generated_data_blocks = []
+generated_algo_blocks = []
+
 # Function to generate random strings
 def random_string():
     return ''.join(random.choices(string.ascii_letters, k=random.randint(3, 8)))
 
 # Function to generate a valid Data block
 def generate_data():
-    data_block = f"data {random_string()} {{\n    source = '{random_string()}'"
+    data_name = random_string()
+    while(data_name in generated_data_blocks):
+        data_name = random_string()
+    
+    data_block = f"data {data_name} {{\n    source = '{random_string()}'"
     if random.choice([True, False]):
         data_block += f"\n    label = '{random_string()}'"
     if random.choice([True, False]):
@@ -25,8 +33,13 @@ def generate_data():
 
 # Function to generate a valid Algo block
 def generate_algo():
+    algo_name = random_string()
+    while(algo_name in generated_algo_blocks):
+        algo_name = random_string()
+    
     algo_type = random.choice(["svm", "knn", "decisionTree", "mlp"])
-    algo_block = f"algo {random_string()} {algo_type} {{\n"
+
+    algo_block = f"algo {algo_name} {algo_type} {{\n"
     if algo_type == "svm":
         algo_block += f"    C = {random.uniform(0, 1)}\n" if random.choice([True, False]) else ""
         algo_block += f"    kernel = '{random.choice(kernels)}'\n" if random.choice([True, False]) else ""
@@ -42,10 +55,6 @@ def generate_algo():
     algo_block += "}"
     return algo_block
 
-# Track generated data and algo block names
-generated_data_blocks = []
-generated_algo_blocks = []
-
 # Function to generate a valid Trainer block referencing existing Data and Algo blocks
 def generate_trainer():
     data_ref = random.choice(generated_data_blocks)
@@ -57,7 +66,7 @@ def generate_trainer():
     trainer_block += "\n}"
     return trainer_block
 
-# Function to generate a Model block with end-of-line characters
+# Function to generate a Model block
 def generate_model():
     model_block = ""
     for _ in range(random.randint(0, 6)):
