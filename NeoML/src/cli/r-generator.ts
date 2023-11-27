@@ -177,28 +177,33 @@ function generateDT(dt: DecisionTree, dataRefName: string, showMetrics: boolean,
     fileNode.append(dt.name, ' <- rpart(',dataRefName,'_Y_train ~ ., ',dataRefName, '_X_train, method = "class"');
 
     // TO DO : adapt the parameters
-    /*
+    
     var args_number = 0;
 
-    //dt.criterion : string
+    //dt.criterion : string (function to measure the quality of a split)
+    // In scikit-learn, supported criteria are “gini” for the Gini impurity and “log_loss” and “entropy” both for the Shannon information gain
+    // Here in R, supported criteria are "gini" and "information" so we'll assume that log_loss and entropy will be translasted into information.
     if(dt.criterion != null){
-        fileNode.append('criterion = "',dt.criterion !,'"');
+        if(dt.criterion == 'gini') {
+            fileNode.append(', parms = list(split = "',dt.criterion !,'")');
+        } else {
+            fileNode.append(', parms = list(split = "information")');
+        }
+        
         args_number ++;
     }
 
     //dt.max_depth : int
     if(dt.max_depth != null){
         if(args_number>0) fileNode.append(', ');
-        fileNode.append('max_depth = ',String(dt.max_depth!));
+        fileNode.append('control = rpart.control(maxdepth = ',String(dt.max_depth!),')');
         args_number ++;
     }
 
     //dt.splitter : string
-    if(dt.splitter!= null){
-        if(args_number>0) fileNode.append(', ');
-        fileNode.append('splitter = "',dt.splitter!,'"');
-        args_number ++;
-    }*/
+    if(dt.splitter != null){
+        console.log(chalk.yellowBright('No splitter parameter in R'));
+    }
 
     fileNode.append(')',NL, NL);
 
