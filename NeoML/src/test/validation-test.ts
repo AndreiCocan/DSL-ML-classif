@@ -113,7 +113,6 @@ describe('Test illegal models', () => {
         data myData {
             source = "C:/helloData"
         }
-
         data myData {
             source = "C:/holaData"
         }
@@ -125,7 +124,6 @@ describe('Test illegal models', () => {
         algo myFirstModel svm {
             C = 0.0
         }
-
         algo myFirstModel svm {
             C = 0.5
         }
@@ -182,5 +180,5 @@ async function assertModelErrors(modelText: string) {
     const db = services.shared.workspace.DocumentBuilder
     await db.build([doc], {validation: true});
     const model = (doc.parseResult.value as Model);
-    expect(model.$document?.diagnostics?.length).toBeGreaterThan(0);  
+    expect(model.$document?.diagnostics?.length).toBeGreaterThan(0); 
 }
