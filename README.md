@@ -18,6 +18,10 @@ This report explores the following key aspects of the project :
 The languages supported by our DSL are Python, utilizing the Scikit-learn library, and R, using several libraries like e1071, rpart, class, caret. 
 These choices were made to leverage the extensive capabilities and popularity of Scikit-learn in Python for machine learning tasks and to harness the robustness and versatility of R's libraries.
 
+In addition to Python and R, we also considered several other languages to be supported by our DSL. Our evaluation encompassed languages such as Java, C++, Go, and Scala. Each of these languages was thoroughly examined for their suitability in the context of our DSL, taking into account factors like performance and existing libraries (TensorFlow, DLIB, Shark, MLPack, GoLearn, Apache Spark MLlib).
+
+(cf. Domain-Analysis.md)
+
 ## Abstract syntax
 
 ### Selected features for our DSL
@@ -143,3 +147,12 @@ Embarking on the journey of crafting a Domain-Specific Language (DSL) for machin
 Expanding on the concern about the future relevance of DSLs, it's crucial to consider the evolving nature of software development practices. The advent of low-code and no-code platforms, coupled with the growing sophistication of AI, raises questions about the enduring importance of DSLs. Teams investing in DSL development tools like Langium should carefully evaluate whether the benefits they provide justify the effort, especially in comparison to emerging alternatives.
 
 Additionally, exploring ways in which AI can generate, complement and enhance DSLs could be a promising avenue for future development. Integrating DSLs with AI-driven solutions may present new opportunities for combining the strengths of both approaches.
+
+
+## Usage of LLM in the project 
+
+We leveraged ChatGPT for various aspects of DSL development:
+- In the domain analysis phase, ChatGPT played a crucial role in structuring our analysis, helping us articulate and refine our understanding.
+- During the grammar-writing process for both Python and R compilers, ChatGPT proved valuable in correcting errors and suggesting improvements, streamlining the development workflow.
+- For our Fuzzer development, we provided ChatGPT with our grammar, allowing it to generate a codebase that served as a starting point. We subsequently fine-tuned and optimized this generated code.
+- However, for testing purposes, we did not utilize ChatGPT.
