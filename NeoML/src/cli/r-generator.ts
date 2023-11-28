@@ -10,12 +10,12 @@ export function generateClassifierR(model: Model, filePath: string, destination:
     const data = extractDestinationAndName(filePath, destination);
     const generatedFilePath = `${path.join(data.destination, data.name)}.r`;
 
-    fileNode.append('library(dplyr)', NL);
+    fileNode.append('suppressMessages(library(dplyr))', NL);
     fileNode.append('library(e1071) # SVM implementation', NL);
     fileNode.append('library(class) # KNN implementation', NL);
     fileNode.append('library(rpart) # DecisionTree implementation', NL);
     fileNode.append('library(nnet) # MLP implementation', NL);
-    fileNode.append('library(caret)', NL,NL);
+    fileNode.append('suppressMessages(library(caret))', NL,NL);
 
     generateData(model.all_data,fileNode);
     generateTrainers(model.all_trainers, model.all_algos, fileNode);
@@ -208,6 +208,6 @@ function generateShowMetrics(modelName: string, dataRefName: string, fileNode: C
     fileNode.append('pred <- predict(',modelName,', ',dataRefName,'_X_test, type = "class")',NL);
     fileNode.append('pred <- factor(pred, levels=levels(',dataRefName,'_Y_test))',NL);
     fileNode.append(modelName, '_accuracy <- confusionMatrix(pred, ',dataRefName,'_Y_test)$overall["Accuracy"]',NL);
-    fileNode.append('print(paste("',modelName,' accuracy:", ',modelName,'_accuracy))',NL);
+    fileNode.append('print(paste("',modelName,' accuracy:", ',modelName,'_accuracy))',NL,NL);
 }
 
