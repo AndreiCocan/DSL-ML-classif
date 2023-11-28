@@ -515,6 +515,53 @@ println(s"Coefficients: ${lsvcModel.coefficients} Intercept: ${lsvcModel.interce
 
 ---
 
+### R
+R is a powerful and versatile programming language commonly used for statistical computing and data analysis. Known for its extensive collection of statistical and graphical techniques, R provides a flexible environment that supports various data manipulation tasks, visualization, and statistical modeling. Its open-source nature fosters a vibrant community, contributing to an ever-expanding ecosystem of packages and libraries.
+
+#### e1071, rpart, class and caret
+Within the realm of machine learning classification in R, several libraries play a crucial role in enhancing predictive modeling capabilities. The e1071 library provides tools for performing support vector machine (SVM) classification, enabling the creation of robust and efficient models. The rpart package focuses on recursive partitioning, offering decision tree-based approaches for classification tasks. The class library is fundamental for k-nearest neighbors (KNN) classification, allowing for straightforward implementation of this intuitive algorithm. Lastly, the caret package serves as a comprehensive toolkit, streamlining the process of building and evaluating machine learning models in R. Together, these libraries contribute to a rich and dynamic landscape for machine learning classification within the R programming language.
+
+##### Code example
+Source : (https://www.datatechnotes.com/2017/08/suppott-vector-machine-svm-model.html)
+
+<details>
+	<summary>Open code example</summary>
+	
+``` R
+library(e1071)
+library(caret)
+ 
+# Classification example
+data(iris)
+set.seed(123)
+
+indexes = createDataPartition(iris$Species, p = .9, list = F)
+train = iris[indexes, ]
+test = iris[-indexes, ]
+ 
+model_svm = svm(Species~., data=train)
+print(model_svm)
+ 
+pred = predict(model_svm, test)
+
+# accuracy check 
+cm = confusionMatrix(test$Species, pred)
+print(cm)  
+
+# caret train method 
+model = train(Species~., data=train, method="svmRadial")
+print(model) 
+
+pred = predict(model, test)
+cm = confusionMatrix(test$Species, pred)
+print(cm)  
+
+
+```
+</details>
+
+---
+
 ### Comparative table
 
 <details>
