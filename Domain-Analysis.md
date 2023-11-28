@@ -567,16 +567,16 @@ print(cm)
 <details>
 	<summary>Open table</summary>
 
-| Characteristic                | scikit-learn (Python) | GoLearn (Go) | TensorFlow (Java) | Shark (C++) | MLlib (Scala) |
-|------------------------------|-----------------------|--------------|--------------------|------------|--------------|
-| Community and Support        | Large community and active support | Growing community | Active community | Growing community | Growing community |
-| Machine Learning             | Yes, traditional methods | Yes, focused on decision trees and random forests | Yes, wide range of models | Yes, with libraries for numerical optimization | Yes, various methods |
-| Deep Learning                | No, except with third-party extensions (like TensorFlow) | No, primarily focused on classical machine learning | Yes, with comprehensive deep learning capabilities | Yes, with deep learning capabilities | No, primarily focused on classical machine learning |
-| Ease of Use                  | Very user-friendly, ideal for ML beginners | User-friendly but fewer resources for beginners | Slightly more complex, mainly for advanced users | User-friendly but may require C++ expertise | User-friendly, suitable for Scala users |
-| Flexibility                  | Less flexible in terms of model customization | More flexibility than scikit-learn but less than TensorFlow | Highly flexible with the ability to customize every aspect of the model | Flexible with a wide variety of customizable parameters | Flexible with high-level and low-level APIs |
-| Performance                  | Strong performance for basic tasks | Decent performance but not as powerful as TensorFlow | Exceptional performance, ideal for deep learning | Strong performance for classical machine learning | Strong performance for various tasks |
-| Deployment                   | Easy to deploy in production due to its simplicity | Can be deployed but requires more effort than scikit-learn | Can be deployed but requires more complex management | Can be deployed with C++ deployment efforts | Can be deployed in the Spark ecosystem |
-| Typical Use Cases            | Data exploration, classification, regression, clustering | Decision trees, random forests, classification | Neural networks, natural language processing, computer vision | Classical machine learning, numerical optimization | Various machine learning tasks |
+| Characteristic                | scikit-learn (Python) | GoLearn (Go) | TensorFlow (Java) | Shark (C++) | MLlib (Scala) | R libraries (R) |
+|------------------------------|-----------------------|--------------|--------------------|------------|--------------|---------------|
+| Community and Support        | Large community and active support | Growing community | Active community | Growing community | Growing community | Active community (on CRAN) |
+| Machine Learning             | Yes, traditional methods | Yes, focused on decision trees and random forests | Yes, wide range of models | Yes, with libraries for numerical optimization | Yes, various methods | Yes, various methods |
+| Deep Learning                | No, except with third-party extensions (like TensorFlow) | No, primarily focused on classical machine learning | Yes, with comprehensive deep learning capabilities | Yes, with deep learning capabilities | No, primarily focused on classical machine learning | No, except with third-party extensions (like TensorFlow or Keras) |
+| Ease of Use                  | Very user-friendly, ideal for ML beginners | User-friendly but fewer resources for beginners | Slightly more complex, mainly for advanced users | User-friendly but may require C++ expertise | User-friendly, suitable for Scala users | Very user-friendly, ideal for ML beginners |
+| Flexibility                  | Less flexible in terms of model customization | More flexibility than scikit-learn but less than TensorFlow | Highly flexible with the ability to customize every aspect of the model | Flexible with a wide variety of customizable parameters | Flexible with high-level and low-level APIs | Flexible, with a variety of packages offering different levels of abstraction |
+| Performance                  | Strong performance for basic tasks | Decent performance but not as powerful as TensorFlow | Exceptional performance, ideal for deep learning | Strong performance for classical machine learning | Strong performance for various tasks | Strong performance for basic tasks (depends on the specific package and task) |
+| Deployment                   | Easy to deploy in production due to its simplicity | Can be deployed but requires more effort than scikit-learn | Can be deployed but requires more complex management | Can be deployed with C++ deployment efforts | Can be deployed in the Spark ecosystem | Can be deployed, with various tools available |
+| Typical Use Cases            | Data exploration, classification, regression, clustering | Decision trees, random forests, classification | Neural networks, natural language processing, computer vision | Classical machine learning, numerical optimization | Various machine learning tasks | Classical machine learning, data analysis, statistical modeling |
 </details>
 
 ## Expected features for our DSL
