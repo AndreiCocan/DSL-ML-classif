@@ -156,12 +156,18 @@ function generateDT(dt: DecisionTree, fileNode: CompositeGeneratorNode){
 function generateTrainers(trainers: Trainer[],fileNode: CompositeGeneratorNode) { 
     trainers.forEach(trainer => {
         
+        if(trainer.train_test_split == null) {
+            trainer.train_test_split = '0.7';
+        }
+        
         fileNode.append(trainer.data_ref.name,'_X_train, ', trainer.data_ref.name,'_X_test, ', trainer.data_ref.name,'_Y_train, ', trainer.data_ref.name,'_Y_test = model_selection.train_test_split(', trainer.data_ref.name,', ', trainer.data_ref.name, '_Y, ', 'test_size = ',trainer.train_test_split,')',NL);
         fileNode.append(trainer.algo_ref.name, '.fit(',trainer.data_ref.name,'_X_train',', ',trainer.data_ref.name,'_Y_train)', NL, NL);
 
         if(trainer.show_metrics){
             fileNode.append('print("Accuracy score : " + str(metrics.accuracy_score(',trainer.data_ref.name,'_Y_test, ',trainer.algo_ref.name,'.predict(',trainer.data_ref.name,'_X_test))))')
         }
+
+        fileNode.append(NL,NL);
     })  
 }
 

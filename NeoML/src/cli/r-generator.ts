@@ -77,6 +77,10 @@ function generateTrainers(trainers: Trainer[], allAlgos: Algo[], fileNode: Compo
             throw new TypeError('Algo not found');
         }
 
+        if(trainer.train_test_split == null) {
+            trainer.train_test_split = '0.7';
+        }
+
         fileNode.append('train_index <- sample(1:nrow(',trainer.data_ref.name,'), (1-',trainer.train_test_split,') * nrow(', trainer.data_ref.name,'))', NL);
         // the partition is not like in scikit-learn
         fileNode.append(trainer.data_ref.name,'_X_train <- ', trainer.data_ref.name, '_X[train_index, ]', NL);
