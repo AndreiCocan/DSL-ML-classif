@@ -10,6 +10,7 @@ export function generateClassifierR(model: Model, filePath: string, destination:
     const data = extractDestinationAndName(filePath, destination);
     const generatedFilePath = `${path.join(data.destination, data.name)}.r`;
 
+    fileNode.append('library(tidyr)',NL);
     fileNode.append('suppressMessages(library(dplyr))', NL);
     fileNode.append('library(e1071) # SVM implementation', NL);
     fileNode.append('library(class) # KNN implementation', NL);
@@ -33,7 +34,8 @@ function generateData(data: Data[],fileNode: CompositeGeneratorNode) {
     data.forEach((d,index) =>{
 
         //data.source: string
-        fileNode.append(d.name,' <- read.csv("',d.source,'")', NL, NL);
+        fileNode.append(d.name,' <- read.csv("',d.source,'")', NL);
+        fileNode.append(d.name,' <- ',d.name,' %>% drop_na()',NL,NL);
 
         //data.drop: Array<string>
         if (d.drop.length>0){
@@ -188,7 +190,7 @@ function generateDT(dt: DecisionTree, dataRefName: string, showMetrics: boolean,
     //dt.max_depth : int
     if(dt.max_depth != null){
         if(args_number>0) fileNode.append(', ');
-        fileNode.append('control = rpart.control(maxdepth = ',String(dt.max_depth!),')');
+        fileNode.append(', control = rpart.control(maxdepth = ',String(dt.max_depth!),')');
         args_number ++;
     }
 

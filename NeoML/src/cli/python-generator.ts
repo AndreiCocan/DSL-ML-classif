@@ -31,7 +31,8 @@ function generateData(data: Data[],fileNode: CompositeGeneratorNode) {
     data.forEach((d,index) =>{
 
         //data.source: string
-        fileNode.append(d.name,' = pd.read_csv("',d.source,'")', NL, NL);
+        fileNode.append(d.name,' = pd.read_csv("',d.source,'")', NL);
+        fileNode.append(d.name,' = ',d.name,'.dropna()',NL,NL);
 
         //data.label: string
         if (d.label != null){
