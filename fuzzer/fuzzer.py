@@ -38,7 +38,7 @@ def generate_data():
     if random.choice([True, False]):
         data_block += f"\n    label = '{label}'"
     if random.choice([True, False]):
-        num_cols_to_drop = random.randint(1, min(3, len(columns)-1))
+        num_cols_to_drop = random.randint(1, min(2, len(columns)-2))
         columns_to_drop = random.sample(columns, num_cols_to_drop)
         if(label in columns_to_drop):
             columns_to_drop.remove(label)

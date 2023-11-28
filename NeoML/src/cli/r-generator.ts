@@ -139,11 +139,11 @@ function generateKNN(knn: KNN, dataRefName: string, showMetrics: boolean, fileNo
     if(knn.weights != null && knn.weights == 'distance'){
         fileNode.append('# Not possible to use distance-based weights in R',NL);
     }
-    fileNode.append(NL, NL);
+    fileNode.append(NL);
 
     if(showMetrics) {
         fileNode.append(knn.name, '_accuracy <- confusionMatrix(',knn.name,', ',dataRefName,'_Y_test)$overall["Accuracy"]',NL);
-        fileNode.append('print(paste("',knn.name,' accuracy:", ',knn.name,'_accuracy))',NL);
+        fileNode.append('print(paste("',knn.name,' accuracy:", ',knn.name,'_accuracy))',NL,NL);
     }
 }
 

@@ -1,5 +1,8 @@
 #! /bin/bash
 
+PURPLE='\033[0;35m'
+NC='\033[0m' # No color
+
 nb_programs=$1
 clean=$2
 compile=$3
@@ -41,11 +44,11 @@ then
     for file in $pathFuzzer/compiled_programs/*.py
     do
         python3 $file #&> ./run_results/$(basename "$file").txt
-        echo "runned $file"
+        echo -e "${PURPLE}Runned $file${NC}"
     done
     for file in $pathFuzzer/compiled_programs/*.r
     do
         Rscript $file #&> ./run_results/$(basename "$file").txt
-        echo "runned $file"
+        echo -e "${PURPLE}Runned $file${NC}"
     done
 fi
