@@ -29,7 +29,6 @@ done
 if [ $compile = "compile" ]
 then
     cd ../NeoML/
-    npm run build
     for file in $pathFuzzer/generated_programs/*.neoml
     do
         ./bin/cli.js generate -d $pathFuzzer/compiled_programs -l Python $file

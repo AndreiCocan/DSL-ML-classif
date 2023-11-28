@@ -1,7 +1,8 @@
 from sklearn import *
 import pandas as pd
 
-myData = pd.read_csv("tests/datasets/random_dataset.csv")
+myData = pd.read_csv("../datasets/random-dataset__Class.csv")
+myData = myData.dropna()
 
 myData_Y = myData["Class"]
 myData = myData.drop(columns=["Class"])
@@ -12,3 +13,4 @@ myData_X_train, myData_X_test, myData_Y_train, myData_Y_test = model_selection.t
 mySecondModel.fit(myData_X_train, myData_Y_train)
 
 print("Accuracy score : " + str(metrics.accuracy_score(myData_Y_test, mySecondModel.predict(myData_X_test))))
+

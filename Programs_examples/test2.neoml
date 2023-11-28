@@ -1,5 +1,5 @@
 data myData {
-   source = "tests/datasets/random_dataset.csv"
+   source = "../datasets/random-dataset__Class.csv"
    label = "Class"
 }
 

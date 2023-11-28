@@ -1,5 +1,5 @@
 data myData {
-   source = "tests/datasets/Iris.csv"
+   source = "../datasets/Iris__Species.csv"
    label = "Species"
    //drop = "unusedFeature1" "unusedFeature2"
    scaler = MinMax

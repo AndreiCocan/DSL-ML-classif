@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import { SVM, type Model, KNN, isSVM, isKNN, DecisionTree, MLP, isDecisionTree, isMLP } from '../language/generated/ast.js';
+import { type Model} from '../language/generated/ast.js';
 
 import { AstNode, CompositeGeneratorNode, EmptyFileSystem, LangiumDocument } from 'langium';
 import { parseDocument } from 'langium/test';
@@ -15,9 +15,9 @@ const services = createNeoMlServices(EmptyFileSystem).NeoMl;
 
 
 describe.each([
-  { neomlfile: 'tests/test0.neoml', quality:1, threshold: 0.8 },
-  { neomlfile: 'tests/test1.neoml', quality:1, threshold: 0.8 },
-  { neomlfile: 'tests/test2.neoml', quality:0, threshold: 0.65 },
+  { neomlfile: '../Programs_examples/test0.neoml', quality:1, threshold: 0.8 },
+  { neomlfile: '../Programs_examples/test1.neoml', quality:1, threshold: 0.8 },
+  { neomlfile: '../Programs_examples/test2.neoml', quality:0, threshold: 0.79 },
 ])('compilation and execution of $neomlfile', async ({ neomlfile, quality,threshold }) => {
 
     const fileNode = new CompositeGeneratorNode();
@@ -26,10 +26,10 @@ describe.each([
 
     const model = await assertModelNoErrors(neomlScript);
 
-    const generated_path =generateClassifierPython(model,'tmp.neoml','src/test',fileNode);
+    const generated_path =generateClassifierPython(model,'tmp.neoml','.',fileNode);
 
     const result_python=await new Promise<string>((resolve, reject) => {
-    exec('python3.9 '+generated_path, (error, stdout, stderr) => {
+    exec('python3 '+generated_path, (error, stdout, stderr) => {
         if (error) {
           console.log(`error: ${error.message}`);
         }

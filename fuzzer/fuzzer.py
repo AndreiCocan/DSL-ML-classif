@@ -19,7 +19,7 @@ def random_string():
     return ''.join(random.choices(string.ascii_letters, k=random.randint(3, 8)))
 
 # Available datasets
-datasets_dir = './datasets'
+datasets_dir = '../datasets'
 datasets = [os.path.join(datasets_dir, d) for d in os.listdir(datasets_dir)]
 
 # Function to generate a valid Data block
