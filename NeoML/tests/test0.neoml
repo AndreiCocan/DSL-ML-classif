@@ -16,9 +16,7 @@ algo mySecondModel knn {
 }
 
 algo myThirdModel decisionTree {
-   criterion = gini
-   max_depth = 10
-   splitter = random
+
 }
 
 algo myMLPModel mlp {

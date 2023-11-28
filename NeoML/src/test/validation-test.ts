@@ -181,3 +181,4 @@ async function assertModelErrors(modelText: string) {
     await db.build([doc], {validation: true});
     const model = (doc.parseResult.value as Model);
     expect(model.$document?.diagnostics?.length).toBeGreaterThan(0); 
+}
