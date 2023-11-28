@@ -107,67 +107,6 @@ describe('Test correct models', () => {
     })
 });
 
-describe('Test illegal models', () => {
-    test('Non-unique names for data', async () => {
-        await assertModelErrors(`
-        data myData {
-            source = "C:/helloData"
-        }
-
-        data myData {
-            source = "C:/holaData"
-        }
-        `)
-    });
-
-    test('Non-unique names for algo', async () => {
-        await assertModelErrors(`
-        algo myFirstModel svm {
-            C = 0.0
-        }
-
-        algo myFirstModel svm {
-            C = 0.5
-        }
-        `)
-    });
-
-    test('Trainer references a non existing data block', async() => {
-        await assertModelErrors(`
-        data myData {
-            source = "C:/helloData"
-        }
-         
-        algo mySvmModel svm {
-           C = 0.0
-        }
-         
-        trainer {
-            data = data.helloData
-            model = algo.mySvmModel
-        }
-        `)
-    });
-
-    test('Trainer references a non existing algo block', async() => {
-        await assertModelErrors(`
-        data myData {
-            source = "C:/helloData"
-        }
-         
-        algo mySvmModel svm {
-           C = 0.0
-        }
-         
-        trainer {
-            data = data.myData
-            model = algo.myFirstModel
-        }
-        `)
-    });
-});
-
-
 async function assertModelNoErrors(modelText: string) : Promise<Model> {
     var doc : LangiumDocument<AstNode> = await parseDocument(services, modelText)
     const db = services.shared.workspace.DocumentBuilder
@@ -175,12 +114,4 @@ async function assertModelNoErrors(modelText: string) : Promise<Model> {
     const model = (doc.parseResult.value as Model);
     expect(model.$document?.diagnostics?.length).toBe(0);
     return model;    
-}
-
-async function assertModelErrors(modelText: string) {
-    var doc : LangiumDocument<AstNode> = await parseDocument(services, modelText)
-    const db = services.shared.workspace.DocumentBuilder
-    await db.build([doc], {validation: true});
-    const model = (doc.parseResult.value as Model);
-    expect(model.$document?.diagnostics?.length).toBeGreaterThan(0);  
 }

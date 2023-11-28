@@ -4,6 +4,8 @@ import * as path from 'node:path';
 import * as fs from 'node:fs';
 import { URI } from 'langium';
 
+
+
 export async function extractDocument(fileName: string, services: LangiumServices): Promise<LangiumDocument> {
     const extensions = services.LanguageMetaData.fileExtensions;
     if (!extensions.includes(path.extname(fileName))) {
