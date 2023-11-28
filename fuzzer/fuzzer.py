@@ -1,5 +1,8 @@
 import random
 import string
+import os
+import re
+import pandas as pd
 
 # Define grammar elements
 scalers = ["MinMax", "Standard", "AbsMax"]
@@ -15,17 +18,32 @@ generated_algo_blocks = []
 def random_string():
     return ''.join(random.choices(string.ascii_letters, k=random.randint(3, 8)))
 
+# Available datasets
+datasets_dir = './datasets'
+datasets = [os.path.join(datasets_dir, d) for d in os.listdir(datasets_dir)]
+
 # Function to generate a valid Data block
 def generate_data():
     data_name = random_string()
     while(data_name in generated_data_blocks):
         data_name = random_string()
     
-    data_block = f"data {data_name} {{\n    source = '{random_string()}'"
+    dataset_path = random.choice(datasets)
+    dataset_name = os.path.basename(dataset_path)
+    label = re.search('^.*__(\w+)\.csv$', dataset_name).group(1)
+    data = pd.read_csv(dataset_path)
+    columns = list(data.columns)
+
+    data_block = f"data {data_name} {{\n    source = '{dataset_path}'"
     if random.choice([True, False]):
-        data_block += f"\n    label = '{random_string()}'"
+        data_block += f"\n    label = '{label}'"
     if random.choice([True, False]):
-        data_block += f"\n    drop = {' '.join([random_string() for _ in range(random.randint(1, 3))])}"
+        num_cols_to_drop = random.randint(1, min(3, len(columns)-1))
+        columns_to_drop = random.sample(columns, num_cols_to_drop)
+        if(label in columns_to_drop):
+            columns_to_drop.remove(label)
+        quoted_columns = [f"'{col}'" for col in columns_to_drop]
+        data_block += f"\n    drop = {' '.join(quoted_columns)}"
     if random.choice([True, False]):
         data_block += f"\n    scaler = {random.choice(scalers)}"
     data_block += "\n}"
@@ -69,7 +87,7 @@ def generate_trainer():
 # Function to generate a Model block
 def generate_model():
     model_block = ""
-    for _ in range(random.randint(0, 6)):
+    for _ in range(random.randint(1, 6)):
         choice = random.choice([generate_data, generate_algo])
         if choice == generate_data:
             data_block = generate_data()
@@ -84,7 +102,7 @@ def generate_model():
             algo_name = algo_block.split()[1]
             generated_algo_blocks.append(algo_name)
 
-    for _ in range(random.randint(0, 4)):
+    for _ in range(random.randint(1, 4)):
         # Only generate a trainer if there are existing data and algo blocks
         if generated_data_blocks and generated_algo_blocks:
             model_block += generate_trainer() + "\n\n"
@@ -94,7 +112,7 @@ def generate_model():
 generated_program = generate_model()
 
 file_id = random_string() + random_string()
-file_name = "./generated_programs/generated_" + file_id +".neoml"
+file_name = "./generated_programs/gen_" + file_id +".neoml"
 with open(file_name, "w") as file:
     file.write(generated_program)
 
