@@ -127,6 +127,41 @@ This time, myData2 and myKnnModel are referenced in a second trainer, so they wi
 
 
 ## How to run the project
+**Prerequisites:** 
+- docker
+
+
+To run the project, the easiest way is to build and run NeoML in docker containers. 
+To do so, go at the root of the repository and execute the following commands:
+
+```bash
+docker build -t NeoMLgenerator .
+docker run --rm -it --entrypoint "/bin/bash" NeoMLgenerator
+```
+To run the NeoML generator in the docker container, use the following command:
+```bash
+./NeoML/bin/cli.js generate -d <Output Dir> -l <Python or R> <.neoml file> 
+```
+
+To run the tests for the generator in the docker container, use the following commands:
+```bash
+cd NeoML
+npm test
+```
+
+To run the fuzzer to generate NeoML files and then execute the translated R and python scripts in the docker container, use the following commands:
+
+```bash
+cd fuzzer
+./fuzzer_generate-and-compile.sh <Number of .neoml files generated> clean compile run
+```
+
+If you only want to generate NeoML files in the docker container, use the following commands:
+
+```bash
+cd fuzzer
+python3 fuzzer.py 
+```
 
 
 
