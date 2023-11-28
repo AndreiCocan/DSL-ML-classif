@@ -53,7 +53,7 @@ Trainer:
     '}';
 
 hidden terminal WS: /\s+/;
-terminal SCALER: /MinMax|Standard|AbsMax/;
+terminal SCALER: /MinMax|Standard|MaxAbs/;
 terminal ID: /[a-zA-Z][\w]*/;
 terminal STRING: /"[^"]*"|'[^']*'/;
 terminal PERCENTAGE: /(0\.\d+)|(1\.0)/;
