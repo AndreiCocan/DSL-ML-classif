@@ -163,6 +163,14 @@ cd fuzzer
 python3 fuzzer.py 
 ```
 
+To generate or update the benchmark, use the following command:
+
+```bash
+cd benchmark
+python benchmark.py
+```
+This will compile and execute all the neoml files in ./Program_examples starting with "complete_"  and save the execution times and results in output.csv 
+
 
 
 ## Assessment of different compilers 
