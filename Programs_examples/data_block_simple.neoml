@@ -1,3 +1,3 @@
 data myData {
-	source = "C:/helloData"
+	source = "../datasets/Iris__Species.csv"
 }

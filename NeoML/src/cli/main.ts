@@ -12,7 +12,7 @@ export const generateAction = async (fileName: string, opts: GenerateOptions): P
     const model = await extractAstNode<Model>(fileName, services);
     const generatedFilePath = generateClassifier(model, fileName, opts.destination, opts.language);
     if(generatedFilePath != ""){
-        console.log(chalk.green(`JavaScript code generated successfully: ${generatedFilePath}`));
+        console.log(chalk.green(`${opts.language} code generated successfully: ${generatedFilePath}`));
     }
         
 };

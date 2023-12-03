@@ -1,6 +1,6 @@
 data myData {
-	source = "C:/helloData"
-	label = "myClassToPredict"
-	drop = "unusedFeature1" "unusedFeature2"
+	source = "../datasets/titanic__Survived.csv"
+    label = "Survived"
+	drop = "PassengerId" "SibSp"
 	scaler = MinMax
 }

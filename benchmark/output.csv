@@ -1,0 +1,13 @@
+Benchmark,Variant,Result,Time
+complete_test0.py,Python,"Accuracy score : 1.0
+",1.129349946975708
+complete_program_train_2_models.py,Python,"Accuracy score : 0.576
+",1.1372590065002441
+complete_test1.py,Python,"Accuracy score : 0.9866666666666667
+",0.9377243518829346
+complete_minimalist_program.py,Python,,1.0528807640075684
+complete_test2.py,Python,"Accuracy score : 0.5642857142857143
+",1.174041986465454
+complete_program.py,Python,"Accuracy score : 0.696
+",1.3410229682922363
+complete_program_with_unused_data_algo_blocks.py,Python,,1.2361602783203125

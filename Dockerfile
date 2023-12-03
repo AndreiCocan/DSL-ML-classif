@@ -46,6 +46,7 @@ COPY --from=builder /app/vite.config.ts ./NeoML
 
 # Copy the application tests
 COPY  fuzzer ./fuzzer
+COPY  benchmark ./benchmark
 COPY  datasets ./datasets
 COPY Programs_examples/ ./Programs_examples
 

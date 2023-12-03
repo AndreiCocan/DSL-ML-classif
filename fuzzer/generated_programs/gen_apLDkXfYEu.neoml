@@ -1,0 +1,42 @@
+algo HACWt mlp {
+}
+
+data YSkeZKjE {
+    source = '../datasets/random-dataset__Class.csv'
+    label = 'Class'
+    scaler = MinMax
+}
+
+data LpVhOdi {
+    source = '../datasets/Iris__Species.csv'
+    label = 'Species'
+}
+
+algo saVRw knn {
+    weights = 'uniform'
+}
+
+trainer {
+    data = data.YSkeZKjE
+    model = algo.saVRw
+    show_metrics = false
+}
+
+trainer {
+    data = data.YSkeZKjE
+    model = algo.saVRw
+    show_metrics = false
+}
+
+trainer {
+    data = data.LpVhOdi
+    model = algo.saVRw
+    show_metrics = false
+}
+
+trainer {
+    data = data.LpVhOdi
+    model = algo.HACWt
+    show_metrics = false
+}
+

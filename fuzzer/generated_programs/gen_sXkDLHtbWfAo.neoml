@@ -1,0 +1,35 @@
+algo fLWrcXw mlp {
+}
+
+data uWdkwKZ {
+    source = '../datasets/Iris__Species.csv'
+    label = 'Species'
+    scaler = AbsMax
+}
+
+algo GOQdtFN knn {
+    n_neighbors = 10
+    weights = 'uniform'
+}
+
+algo VwPl knn {
+}
+
+data LkwzMD {
+    source = '../datasets/Iris__Species.csv'
+    drop = 'PetalWidthCm'
+}
+
+trainer {
+    data = data.LkwzMD
+    model = algo.fLWrcXw
+    show_metrics = true
+}
+
+trainer {
+    data = data.uWdkwKZ
+    model = algo.fLWrcXw
+    train_test_split = 0.323319472294745
+    show_metrics = true
+}
+
