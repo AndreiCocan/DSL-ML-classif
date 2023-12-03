@@ -1,12 +1,12 @@
 data myData {
-	source = "C:/helloData"
-        label = "myClassToPredict"
-	drop = ["unusedFeature1", "unusedFeature2"];
-	scaler = minMax;
+	source = "../datasets/titanic__Survived.csv"
+    label = "Survived"
+	drop = 'PassengerId' 'SibSp'
+	scaler = MinMax
 }
          
 algo mySvmModel svm {
-	C = 0.0
+	C = 0.8
 	kernel = sigmoid
 }
          

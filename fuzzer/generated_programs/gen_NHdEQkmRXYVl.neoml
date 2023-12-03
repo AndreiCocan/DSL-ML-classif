@@ -1,0 +1,31 @@
+data YxHQ {
+    source = '../datasets/Iris__Species.csv'
+    label = 'Species'
+    drop = 'PetalWidthCm'
+}
+
+algo hvwvhVfU knn {
+    weights = 'distance'
+}
+
+trainer {
+    data = data.YxHQ
+    model = algo.hvwvhVfU
+    train_test_split = 0.3071165972922678
+    show_metrics = true
+}
+
+trainer {
+    data = data.YxHQ
+    model = algo.hvwvhVfU
+    train_test_split = 0.9502723340332941
+    show_metrics = true
+}
+
+trainer {
+    data = data.YxHQ
+    model = algo.hvwvhVfU
+    train_test_split = 0.897970409331531
+    show_metrics = true
+}
+

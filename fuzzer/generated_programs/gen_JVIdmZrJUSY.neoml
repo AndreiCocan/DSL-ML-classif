@@ -1,0 +1,10 @@
+data OIgtDTG {
+    source = '../datasets/Iris__Species.csv'
+    label = 'Species'
+    scaler = AbsMax
+}
+
+data ZCYMKxw {
+    source = '../datasets/titanic__Survived.csv'
+}
+
