@@ -199,7 +199,7 @@ In conclusion, Langium's time-saving advantages make it a valuable asset in DSL 
 ## Usage of LLM in the project 
 
 We leveraged ChatGPT for various aspects of DSL development:
-- In the domain analysis phase, ChatGPT played a crucial role in structuring our analysis, helping us articulate and refine our understanding.
-- During the grammar-writing process for both Python and R compilers, ChatGPT proved valuable in correcting errors and suggesting improvements, streamlining the development workflow.
-- For our Fuzzer development, we provided ChatGPT with our grammar, allowing it to generate a codebase that served as a starting point. We subsequently fine-tuned and optimized this generated code.
+- In the domain analysis phase, ChatGPT assisted us in structuring our analysis and refining our understanding.
+- During the grammar-writing process, ChatGPT proved valuable in spotting and correcting errors (especially when we were facing playground bugs).
+- In the development of our Fuzzer, ChatGPT was initially utilized to generate a foundational codebase by providing it with our grammar. Subsequently, we dedicated effort to fine-tune and optimize the generated code.
 - However, for testing purposes, we did not utilize ChatGPT.
