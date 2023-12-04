@@ -3,14 +3,15 @@
 ## Introduction 
 
 The purpose of this report is to provide an overview of the development process and key features of our Domain-Specific Language (DSL) designed for machine learning classification. 
-Our DSL is equipped with two compilers, one in Python and the other in R.
+Our DSL is equipped with two compilers, one in Python and one in R.
 This report explores the following key aspects of the project :
 - The supported libraries and languages
 - Abstract syntax of our DSL
 - Examples of programs in action 
 - The instructions to run our project
 - The assessment of our different compilers 
-- Our user feedback on Langium 
+- Our user feedback on Langium
+- Our usage of LLM in the project
 
 
 ## Supported libraries and languages
@@ -177,19 +178,22 @@ This will compile and execute all the neoml files in ./Program_examples starting
 
 
 
-## Langium 
 
-### A Critical Examination of Langium: Challenges in DSL Development
+## Langium feedback
 
-#### Introduction
+**1. Time Efficiency:**
+Langium significantly expedited DSL development, allowing us to focus on language features instead of infrastructure, resulting in substantial time savings compared to starting from scratch.
 
-Embarking on the journey of crafting a Domain-Specific Language (DSL) for machine learning classification using Langium, an Eclipse-based framework, proved to be a mixed experience. While the tool demonstrated commendable attributes such as speed and user-friendly features, several notable shortcomings surfaced during our DSL development.
+**2. Playground Challenges:**
+While the Langium playground aids grammar definition, frequent bugs required regular page refreshes, causing notable disruptions.
 
-#### Long-Term Viability of DSLs
+**3. Validation Testing Documentation:**
+Improved documentation, particularly for validation testing, would enhance the learning curve. The tutorial provided by the teacher was necessary to streamline the development of these tests. 
 
-Expanding on the concern about the future relevance of DSLs, it's crucial to consider the evolving nature of software development practices. The advent of low-code and no-code platforms, coupled with the growing sophistication of AI, raises questions about the enduring importance of DSLs. Teams investing in DSL development tools like Langium should carefully evaluate whether the benefits they provide justify the effort, especially in comparison to emerging alternatives.
+**4. Synergy with AI:**
+Despite the AI surge, DSLs remain powerful for expressing domain-specific concepts. Combining Langium with AI technologies offers a versatile toolkit, addressing different challenges in software development effectively.
 
-Additionally, exploring ways in which AI can generate, complement and enhance DSLs could be a promising avenue for future development. Integrating DSLs with AI-driven solutions may present new opportunities for combining the strengths of both approaches.
+In conclusion, Langium's time-saving advantages make it a valuable asset in DSL development, though addressing playground issues and enhancing specific documentation areas could further improve its usability. The coexistence of Langium and AI technologies provides developers with a holistic approach to diverse software development challenges.
 
 
 ## Usage of LLM in the project 
