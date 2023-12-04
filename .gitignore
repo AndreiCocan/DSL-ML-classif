@@ -9,3 +9,7 @@ node_modules/
 *.tsbuildinfo
 examples/*/example/generated
 examples/hello-world
+benchmark/compiled_programs/
+fuzzer/generated_programs/
+fuzzer/compiled_programs/
+fuzzer/run_results/

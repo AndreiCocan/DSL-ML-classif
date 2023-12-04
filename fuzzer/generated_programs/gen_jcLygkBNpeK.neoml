@@ -1,6 +1,0 @@
-data xXKxpq {
-    source = '../datasets/Iris__Species.csv'
-    label = 'Species'
-    drop = 'SepalWidthCm' 'PetalWidthCm'
-}
-
