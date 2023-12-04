@@ -13,3 +13,5 @@ benchmark/compiled_programs/
 fuzzer/generated_programs/
 fuzzer/compiled_programs/
 fuzzer/run_results/
+NeoML/tmp.py
+NeoML/tmp.r
