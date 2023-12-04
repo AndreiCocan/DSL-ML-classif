@@ -3,6 +3,8 @@ import time
 import csv
 import os
 import glob
+import statistics
+import numpy as np
 
 PURPLE = '\033[0;35m'
 NC = '\033[0m'  # No color
@@ -46,33 +48,60 @@ def main():
     os.chdir("../benchmark")
 
     with open(output_file, 'w') as csvfile:
-        fieldnames = ['Benchmark', 'Variant', 'Result', 'Time']
+        fieldnames = ['Benchmark', 'Result_Python', 'Time_Python', 'Result_R', 'Time_R']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
         # Write the header to the CSV file
         writer.writeheader()
 
+        exec_times_py = []
+        exec_times_r = []
+
         # Iterate over files in the script directory
         for script_name in os.listdir(script_directory):
-            if script_name.endswith(".py") or script_name.endswith(".r"):
-                script_path = os.path.join(script_directory, script_name)
+            if script_name.endswith(".py"):
+                script_path_py = os.path.join(script_directory, script_name)
+                script_path_r = os.path.join(script_directory, os.path.splitext(script_name)[0] + '.r')
 
                 # Run Python script
-                if script_name.endswith(".py"):
-                    output, execution_time = run_script(script_path, 'python')
-                    language = 'Python'
-                elif script_name.endswith(".r"):
-                    # Run R script
-                    output, execution_time = run_script(script_path, 'Rscript')
-                    language = 'R'
+                output_py, execution_time_py = run_script(script_path_py, 'python3')
+                exec_times_py += [execution_time_py]
+                # Run R script
+                output_r, execution_time_r = run_script(script_path_r, 'Rscript')
+                exec_times_r += [execution_time_r]
 
                 # Write the data to the CSV file
                 writer.writerow({
-                    'Benchmark': script_name,
-                    'Variant': language,
-                    'Result': output,
-                    'Time': execution_time
+                    'Benchmark': os.path.splitext(script_name)[0]+'.neoml',
+                    'Result_Python': output_py,
+                    'Time_Python': execution_time_py,
+                    'Result_R': output_r,
+                    'Time_R': execution_time_r
                 })
+        
+        writer.writerow({
+            'Benchmark': '',
+            'Result_Python': '',
+            'Time_Python': '',
+            'Result_R': '',
+            'Time_R': ''
+        })
+
+        writer.writerow({
+            'Benchmark': 'Means',
+            'Result_Python': '',
+            'Time_Python': statistics.mean(exec_times_py),
+            'Result_R': '',
+            'Time_R': statistics.mean(exec_times_r)
+        })
+
+        writer.writerow({
+            'Benchmark': 'Variances',
+            'Result_Python': '',
+            'Time_Python': np.var(exec_times_py),
+            'Result_R': '',
+            'Time_R': np.var(exec_times_r)
+        })
 
 if __name__ == "__main__":
     main()

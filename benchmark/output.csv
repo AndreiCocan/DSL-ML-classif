@@ -1,13 +1,21 @@
-Benchmark,Variant,Result,Time
-complete_test0.py,Python,"Accuracy score : 1.0
-",1.129349946975708
-complete_program_train_2_models.py,Python,"Accuracy score : 0.576
-",1.1372590065002441
-complete_test1.py,Python,"Accuracy score : 0.9866666666666667
-",0.9377243518829346
-complete_minimalist_program.py,Python,,1.0528807640075684
-complete_test2.py,Python,"Accuracy score : 0.5642857142857143
-",1.174041986465454
-complete_program.py,Python,"Accuracy score : 0.696
-",1.3410229682922363
-complete_program_with_unused_data_algo_blocks.py,Python,,1.2361602783203125
+Benchmark,Result_Python,Time_Python,Result_R,Time_R
+complete_test1.neoml,"Accuracy score : 1.0
+",0.802762508392334,"[1] ""myFirstModel accuracy: 1""
+",1.7578744888305664
+complete_program_with_unused_data_algo_blocks.neoml,,0.7816765308380127,,1.7243199348449707
+complete_program.neoml,"Accuracy score : 0.736
+",0.7840039730072021,"[1] ""mySvmModel accuracy: 0.71""
+",1.7218365669250488
+complete_program_train_2_models.neoml,"Accuracy score : 0.564
+",0.7841994762420654,"[1] ""mySvmModel accuracy: 0.742""
+",1.7296042442321777
+complete_test0.neoml,"Accuracy score : 1.0
+",0.7821400165557861,"[1] ""myFirstModel accuracy: 1""
+",1.7238819599151611
+complete_minimalist_program.neoml,,0.7785091400146484,,1.7325708866119385
+complete_test2.neoml,"Accuracy score : 0.5285714285714286
+",0.7675445079803467,"[1] ""mySecondModel accuracy: 0.535714285714286""
+",1.7030024528503418
+,,,,
+Means,,0.7829765932900565,,1.7275843620300293
+Variances,,9.350440100252873e-05,,0.00022972982955187554
