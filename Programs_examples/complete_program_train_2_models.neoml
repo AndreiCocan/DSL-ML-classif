@@ -1,8 +1,8 @@
 data myData {
 	source = "../datasets/titanic__Survived.csv"
-        label = "Survived"
-	drop = ["PassengerId", "SibSp"];
-	scaler = minMax;
+    label = "Survived"
+	drop = "PassengerId"
+	scaler = MinMax
 }
 
 data myData2 {
@@ -21,9 +21,9 @@ algo myKnnModel knn {
          
 trainer {
 	data = data.myData
-        model = algo.mySvmModel
-        train_test_split = 0.7
-        show_metrics = true
+    model = algo.mySvmModel
+    train_test_split = 0.8
+    show_metrics = true
 }
 
 trainer {
