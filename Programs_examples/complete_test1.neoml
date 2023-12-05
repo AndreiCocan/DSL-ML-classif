@@ -29,3 +29,10 @@ trainer {
     train_test_split=0.5
     show_metrics = true
 }
+
+trainer {
+    data = data.myData
+    model = algo.mySecondModel
+    train_test_split=0.8
+    show_metrics = true
+}
