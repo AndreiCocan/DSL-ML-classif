@@ -1,0 +1,238 @@
+Benchmark,Result_Python,Time_Python,Result_R,Time_R
+complete_test1.neoml,"Accuracy score : 1.0
+Accuracy score : 0.9583333333333334
+",0.7600548267364502,"[1] ""myFirstModel accuracy: 1""
+[1] ""mySecondModel accuracy: 0.966942148760331""
+",1.7747037410736084
+complete_program_with_unused_data_algo_blocks.neoml,,0.7455708980560303,,1.6847951412200928
+complete_program.neoml,"Accuracy score : 0.728
+",0.7393221855163574,"[1] ""mySvmModel accuracy: 0.74""
+",1.7000758647918701
+complete_program_train_2_models.neoml,"Accuracy score : 0.7290209790209791
+",0.7438645362854004,"[1] ""mySvmModel accuracy: 0.772727272727273""
+",1.7001965045928955
+complete_test0.neoml,"Accuracy score : 1.0
+",0.7303142547607422,"[1] ""myFirstModel accuracy: 1""
+",1.700908899307251
+complete_minimalist_program.neoml,,0.7290475368499756,,1.6627755165100098
+complete_test2.neoml,"Accuracy score : 0.42857142857142855
+",0.7911989688873291,"[1] ""mySecondModel accuracy: 0.507142857142857""
+",1.6941969394683838
+gen_bMgfjlIHA.neoml,"Accuracy score : 0.7523809523809524
+Accuracy score : 0.7435897435897436
+",0.8467226028442383,"# weights:  75
+initial  value 66.438820 
+iter  10 value 40.667884
+iter  20 value 22.494600
+final  value 22.493768 
+converged
+[1] ""FcgvA accuracy: 0.657142857142857""
+# weights:  75
+initial  value 106.009900 
+iter  10 value 57.302418
+iter  20 value 17.436724
+iter  30 value 0.155774
+iter  40 value 0.030758
+iter  50 value 0.008016
+iter  60 value 0.000307
+final  value 0.000043 
+converged
+[1] ""FcgvA accuracy: 0.987179487179487""
+",1.691176414489746
+gen_pcrYhooiD.neoml,"Accuracy score : 0.7304347826086957
+",0.736325740814209,"[1] ""pxILNZOB accuracy: 0.747826086956522""
+",1.6920983791351318
+gen_QdGTzmsyzX.neoml,,0.7284224033355713,,1.6615409851074219
+gen_eNfhHiEefHwwRS.neoml,"Accuracy score : 1.0
+Accuracy score : 0.9904761904761905
+",0.7401285171508789,"[1] ""FThUoVp accuracy: 0.976190476190476""
+",1.678823709487915
+gen_eUgPywG.neoml,"Accuracy score : 0.7368421052631579
+Accuracy score : 0.5326530612244897
+Accuracy score : 0.67
+Accuracy score : 0.6380543633762518
+",0.9497153759002686,"[1] ""QBuIni accuracy: 0.483673469387755""
+# weights:  73
+initial  value 182.642866 
+iter  10 value 132.718399
+iter  20 value 111.948487
+iter  30 value 106.875119
+iter  40 value 104.696966
+iter  50 value 103.118117
+iter  60 value 101.398041
+iter  70 value 101.168036
+iter  80 value 101.164689
+iter  90 value 101.164075
+final  value 101.164065 
+converged
+# weights:  73
+initial  value 7.695084 
+iter  10 value 4.911803
+iter  20 value 4.911758
+iter  30 value 4.858654
+iter  40 value 4.637605
+iter  50 value 4.637128
+final  value 4.637124 
+converged
+",1.7181646823883057
+gen_iGMDRFdgKR.neoml,"Accuracy score : 0.7478260869565218
+",0.8065745830535889,"# weights:  41
+initial  value 50.645581 
+iter  10 value 12.966216
+iter  20 value 12.949008
+final  value 12.948933 
+converged
+[1] ""fyTlyHPe accuracy: 0.704347826086957""
+",1.6830685138702393
+gen_GlonFFOkMHUda.neoml,"Accuracy score : 0.8095238095238095
+Accuracy score : 0.9142857142857143
+Accuracy score : 0.9900990099009901
+Accuracy score : 0.7299270072992701
+",1.0147769451141357,"# weights:  67
+initial  value 46.749041 
+iter  10 value 5.644371
+iter  20 value 0.455661
+iter  30 value 0.000519
+final  value 0.000068 
+converged
+[1] ""xEkw accuracy: 0.942857142857143""
+# weights:  67
+initial  value 62.714930 
+iter  10 value 21.882423
+iter  20 value 2.513086
+iter  30 value 0.010553
+iter  40 value 0.002229
+final  value 0.000077 
+converged
+# weights:  67
+initial  value 53.347213 
+iter  10 value 16.106948
+iter  20 value 4.718597
+iter  30 value 2.928559
+iter  40 value 0.004169
+final  value 0.000039 
+converged
+[1] ""xEkw accuracy: 0.940594059405941""
+# weights:  67
+initial  value 16.172215 
+iter  10 value 3.527618
+iter  20 value 0.015630
+final  value 0.000069 
+converged
+[1] ""xEkw accuracy: 0.956204379562044""
+",1.7022035121917725
+gen_mpOiwiST.neoml,,0.7307627201080322,,1.662560224533081
+gen_eEDfNDnY.neoml,,0.7250270843505859,,1.6555554866790771
+gen_BxxbjXPJqjoK.neoml,"Accuracy score : 0.9904761904761905
+Accuracy score : 0.7304347826086957
+",0.7455954551696777,"[1] ""WrVlFDmm accuracy: NaN""
+",1.7672817707061768
+gen_bfhzpCJiIbiMd.neoml,"Accuracy score : 0.616
+Accuracy score : 0.62
+Accuracy score : 0.7435897435897436
+",0.7551603317260742,"[1] ""Xkn accuracy: 0.79""
+",1.7280113697052002
+gen_CCSvUfgz.neoml,"Accuracy score : 0.5
+Accuracy score : 0.7565217391304347
+Accuracy score : 0.7304347826086957
+",0.8963704109191895,"[1] ""rhOFWx accuracy: 1""
+# weights:  41
+initial  value 47.975281 
+iter  10 value 15.746668
+iter  20 value 15.746272
+iter  30 value 15.746193
+final  value 15.746174 
+converged
+# weights:  41
+initial  value 31.026318 
+iter  10 value 16.879686
+iter  20 value 16.825341
+final  value 16.825292 
+converged
+[1] ""VkFG accuracy: 0.730434782608696""
+",1.6861827373504639
+gen_xYYGoEJZ.neoml,"Accuracy score : 0.32142857142857145
+Accuracy score : 0.8285714285714286
+",0.7483506202697754,,1.6805334091186523
+gen_GcJjdJi.neoml,"Accuracy score : 1.0
+Accuracy score : 0.6153846153846154
+",0.750732421875,"[1] ""jxYbXYdu accuracy: 1""
+",1.6999402046203613
+gen_sfEcIVduESN.neoml,,0.7339346408843994,,1.6934680938720703
+gen_BSvQeUtePMtE.neoml,"Accuracy score : 0.7565217391304347
+Accuracy score : 0.7304347826086957
+Accuracy score : 0.7043478260869566
+Accuracy score : 0.4959183673469388
+",0.8188464641571045,"[1] ""CcK accuracy: 0.747826086956522""
+# weights:  33
+initial  value 49.844506 
+iter  10 value 16.566846
+iter  20 value 16.552127
+final  value 16.552102 
+converged
+[1] ""ChIFSu accuracy: 0.739130434782609""
+[1] ""CcK accuracy: 0.512244897959184""
+",1.6986448764801025
+gen_bOOJHTcrkg.neoml,"Accuracy score : 0.926829268292683
+Accuracy score : 0.6357142857142857
+",0.7979171276092529,"[1] ""ifvyso accuracy: 0.975609756097561""
+[1] ""ifvyso accuracy: 0.321428571428571""
+",1.688333511352539
+gen_aZyVqZFywh.neoml,,0.7266674041748047,,1.6536509990692139
+gen_gtIPMArf.neoml,"Accuracy score : 1.0
+Accuracy score : 0.784
+Accuracy score : 1.0
+",0.7541136741638184,,1.7009351253509521
+gen_XhCCrwCNn.neoml,"Accuracy score : 0.8058252427184466
+Accuracy score : 0.6986301369863014
+Accuracy score : 0.7306889352818372
+Accuracy score : 0.8
+",1.2502198219299316,"# weights:  46
+initial  value 282.717048 
+iter  10 value 180.496449
+iter  20 value 165.193161
+iter  30 value 159.985322
+iter  40 value 155.729957
+iter  50 value 149.126652
+iter  60 value 146.427027
+iter  70 value 145.195881
+iter  80 value 144.419133
+iter  90 value 143.669373
+iter 100 value 142.385488
+final  value 142.385488 
+stopped after 100 iterations
+# weights:  46
+initial  value 85.814543 
+iter  10 value 54.338162
+iter  20 value 48.405085
+iter  30 value 41.818693
+iter  40 value 32.735915
+iter  50 value 28.338701
+iter  60 value 25.696199
+iter  70 value 25.092226
+iter  80 value 24.843360
+iter  90 value 24.610230
+iter 100 value 24.519127
+final  value 24.519127 
+stopped after 100 iterations
+[1] ""XZc accuracy: 0.74486301369863""
+[1] ""kKOsJQJ accuracy: 0.757828810020877""
+# weights:  46
+initial  value 458.599826 
+iter  10 value 285.782695
+iter  20 value 273.575507
+iter  30 value 253.594787
+iter  40 value 242.013121
+iter  50 value 237.558303
+iter  60 value 234.427624
+iter  70 value 233.274168
+iter  80 value 233.213033
+iter  90 value 233.210564
+iter  90 value 233.210563
+iter  90 value 233.210563
+final  value 233.210563 
+converged
+",1.7383322715759277
+,,,,
+Means,,0.7961384278756601,,1.6962281068166096
+Variances,,0.012931904166497064,,0.0008368403628503952

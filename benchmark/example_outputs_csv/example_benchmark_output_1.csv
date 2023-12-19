@@ -1,0 +1,42 @@
+Benchmark,Result_Python,Time_Python,Result_R,Time_R
+complete_test1.neoml,"Accuracy score : 0.9866666666666667
+",0.7806720733642578,"[1] ""myFirstModel accuracy: 0.986666666666667""
+",1.8298654556274414
+complete_program_with_unused_data_algo_blocks.neoml,,0.736086368560791,,1.693859338760376
+complete_program.neoml,"Accuracy score : 0.678
+",0.740576982498169,"[1] ""mySvmModel accuracy: 0.738""
+",1.7146916389465332
+complete_program_train_2_models.neoml,"Accuracy score : 0.576
+",0.7404108047485352,"[1] ""mySvmModel accuracy: 0.734""
+",1.7179722785949707
+complete_test0.neoml,"Accuracy score : 1.0
+",0.7374157905578613,"[1] ""myFirstModel accuracy: 1""
+",1.709472894668579
+complete_minimalist_program.neoml,,0.7391109466552734,,1.6580564975738525
+complete_test2.neoml,"Accuracy score : 0.5285714285714286
+",0.7429485321044922,"[1] ""mySecondModel accuracy: 0.521428571428571""
+",1.6641545295715332
+gen_tHhhokdZpQAsIa.neoml,"Accuracy score : 0.4975609756097561
+",0.9624860286712646,"# weights:  41
+initial  value 236.958416 
+iter  10 value 199.339445
+iter  20 value 197.169494
+iter  30 value 193.769514
+iter  40 value 192.882643
+iter  50 value 192.871285
+final  value 192.871277 
+converged
+",1.6753818988800049
+gen_yOVowkurJqZj.neoml,,0.7320785522460938,,1.6594858169555664
+gen_HjFbcfHxKvvIYI.neoml,,0.7398359775543213,,1.8090651035308838
+gen_qbKeCqvxoRznv.neoml,,0.7727351188659668,,1.8556289672851562
+gen_bKyPHyHLNgO.neoml,,0.7753267288208008,,1.6673176288604736
+gen_PHBJVXFfYqde.neoml,,0.7337279319763184,,1.6493310928344727
+gen_JqEyRqGwOs.neoml,,0.7372119426727295,,1.6817893981933594
+gen_movaPPvKNiTYfY.neoml,"Accuracy score : 1.0
+",0.7343273162841797,,1.6939351558685303
+gen_eaLMYztMkIRDW.neoml,,0.7338156700134277,,1.7143781185150146
+gen_fzjxdfvjbX.neoml,,0.8042104244232178,,1.8484606742858887
+,,,,
+Means,,0.761351599412806,,1.7201674405266256
+Variances,,0.00294464385425747,,0.004604432601757168
