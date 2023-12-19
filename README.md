@@ -52,8 +52,8 @@ A trainer has a Data block and an Algo block. Every algorithm available for mode
 Very simple program
 ```
 data myData {
-   source = "C:/...";
-   label = "myClassToPredict"; // if not specified, the last column of data will be taken as label
+   source = "C:/..."
+   label = "myClassToPredict" // if not specified, the last column of data will be taken as label
 }
 ```
 This program is valid but won't do anything as we don't ask to train any model.
@@ -63,8 +63,8 @@ A complete program
 data myData {
 	source = "C:/helloData"
         label = "myClassToPredict"
-	drop = ["unusedFeature1", "unusedFeature2"];
-	scaler = minMax;
+	drop = "unusedFeature1" "unusedFeature2"
+	scaler = minMax
 }
 
 data myData2 {
@@ -94,8 +94,8 @@ A more complex program that train several models
 data myData {
 	source = "C:/helloData"
         label = "myClassToPredict"
-	drop = ["unusedFeature1", "unusedFeature2"];
-	scaler = minMax;
+	drop = "unusedFeature1" "unusedFeature2"
+	scaler = MinMax
 }
 
 data myData2 {
