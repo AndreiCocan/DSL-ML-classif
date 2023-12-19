@@ -176,7 +176,13 @@ This will compile and execute all the neoml files in ./Program_examples starting
 
 ## Assessment of different compilers 
 
+In the benchmark folder, you'll discover the `benchmark.py` file, which operates on test NeoML programs and an additional 20 programs generated during execution using the fuzzer. The output and execution times of each script (Python and R for every NeoML program) are stored in a CSV file. Additionally, we compute the means and variances of execution times in both Python and R to facilitate a comparison between our two compilers. We've included sample output examples in the folder [](benchmark/examples_output_csv/). Our observations reveal consistent results across these executions.
 
+In general, the compiled Python scripts consistently showcase faster execution times across various DSL programs, averaging around 0.76 seconds. It maintains a commendable accuracy, ranging from 0.32 to a perfect 1.0, demonstrating robust performance stability.
+
+Conversely, the R compiler consistently lags in speed, with execution times averaging about 1.70 seconds. Although its accuracy ranges between 0.49 to 1.0, it doesn't match the consistency observed in the Python compiler's performance.
+
+Regardless of the dataset used, Python exhibits swifter execution, while the R compiler, albeit slower, showcases varied accuracy that occasionally matches or surpasses Python's accuracy. The choice between the two compilers depends on the priority: Python for faster execution or R for potential higher accuracy despite slower speeds.
 
 
 ## Langium feedback
