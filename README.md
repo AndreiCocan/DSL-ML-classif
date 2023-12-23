@@ -21,7 +21,7 @@ These choices were made to leverage the extensive capabilities and popularity of
 
 In addition to Python and R, we also considered several other languages to be supported by our DSL. Our evaluation encompassed languages such as Java, C++, Go, and Scala. Each of these languages was thoroughly examined for their suitability in the context of our DSL, taking into account factors like performance and existing libraries (TensorFlow, DLIB, Shark, MLPack, GoLearn, Apache Spark MLlib).
 
-(cf. Domain-Analysis.md)
+(cf. [Domain-Analysis.md](Domain-Analysis.md))
 
 ## Abstract syntax
 
