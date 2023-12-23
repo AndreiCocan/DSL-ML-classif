@@ -23,6 +23,7 @@ In addition to Python and R, we also considered several other languages to be su
 
 (cf. [Domain-Analysis.md](Domain-Analysis.md))
 
+
 ## Abstract syntax
 
 ### Selected features for our DSL
@@ -170,7 +171,7 @@ To generate or update the benchmark, use the following command:
 cd benchmark
 python benchmark.py
 ```
-This will compile and execute all the neoml files in ./Program_examples starting with "complete_"  and save the execution times and results in output.csv 
+This will compile and execute all the neoml files in ./Program_examples starting with "complete_", plus 20 fuzzer-generated neoml programs, and save the execution times and results in output.csv 
 
 
 
@@ -178,11 +179,15 @@ This will compile and execute all the neoml files in ./Program_examples starting
 
 In the benchmark folder, you'll discover the `benchmark.py` file, which operates on test NeoML programs and an additional 20 programs generated during execution using the fuzzer. The output and execution times of each script (Python and R for every NeoML program) are stored in a CSV file. Additionally, we compute the means and variances of execution times in both Python and R to facilitate a comparison between our two compilers. We've included sample output examples in the folder [](benchmark/examples_output_csv/). Our observations reveal consistent results across these executions.
 
-In general, the compiled Python scripts consistently showcase faster execution times across various DSL programs, averaging around 0.76 seconds. It maintains a commendable accuracy, ranging from 0.32 to a perfect 1.0, demonstrating robust performance stability.
+In general, the compiled Python scripts consistently showcase faster execution times across various DSL programs, averaging around 0.76 seconds. It maintains a commendable accuracy, ranging from 0.32 to a perfect 1.0, demonstrating robust performance stability (considering we use sometimes a "random" dataset made to obtain bad accuracy).
 
 Conversely, the R compiler consistently lags in speed, with execution times averaging about 1.70 seconds. Although its accuracy ranges between 0.49 to 1.0, it doesn't match the consistency observed in the Python compiler's performance.
 
 Regardless of the dataset used, Python exhibits swifter execution, while the R compiler, albeit slower, showcases varied accuracy that occasionally matches or surpasses Python's accuracy. The choice between the two compilers depends on the priority: Python for faster execution or R for potential higher accuracy despite slower speeds.
+
+
+## Fuzzer
+Among all the proposed subjects, we chose to develop a fuzzer to generate valid random NeoML programs. This decision aimed to thoroughly test our DSL, identify bugs, and subsequently address them. The complementary part of the final assignment, detailing the obtained results for this follow-up project, is available in [Assignment2_fuzzer.md](Assignment2_fuzzer.md).
 
 
 ## Langium feedback
@@ -207,5 +212,16 @@ In conclusion, Langium's time-saving advantages make it a valuable asset in DSL 
 We leveraged ChatGPT for various aspects of DSL development:
 - In the domain analysis phase, ChatGPT assisted us in structuring our analysis and refining our understanding.
 - During the grammar-writing process, ChatGPT proved valuable in spotting and correcting errors (especially when we were facing playground bugs).
-- In the development of our Fuzzer, ChatGPT was initially utilized to generate a foundational codebase by providing it with our grammar. Subsequently, we dedicated effort to fine-tune and optimize the generated code.
+- In the development of our Fuzzer, ChatGPT was initially utilized to generate a foundational codebase by providing it with our grammar. Subsequently, we dedicated effort to adapt, fine-tune and optimize the generated code.
 - However, for testing purposes, we did not utilize ChatGPT.
+
+
+## Conclusion
+
+Our language focuses specifically on machine learning classification tasks. We honed in on Python and R for their robust libraries in this domain. This language streamlines data handling, model training, and result visualization for classification purposes.
+
+While Python consistently performed well, the development of our R compiler posed significant challenges due to unresolved bugs in the R libraries that remained obscure, as we detailed it in [Assignment2_fuzzer.md](Assignment2_fuzzer.md). With our benchmark, we compared the performance of our Python and R compilers—the obtained Python scripts are clearly and consistently quicker, but R scripts occasionally offer higher accuracy.
+
+Langium played a key role in speeding up development, though it had some glitches along the way. ChatGPT (LLM) helped refine our approach during some phases of the development.
+
+In essence, our language targets machine learning classification tasks, harnessing Python and R for their strengths in this area. Langium proved beneficial despite some hiccups, and we're optimistic about the potential collaboration with AI technologies.
