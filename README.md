@@ -64,7 +64,7 @@ data myData {
 	source = "C:/helloData"
         label = "myClassToPredict"
 	drop = "unusedFeature1" "unusedFeature2"
-	scaler = minMax
+	scaler = MinMax
 }
 
 data myData2 {
