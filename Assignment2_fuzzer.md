@@ -45,7 +45,7 @@ Error in terms.formula(formula, data = data) :
 Calls: nnet ... <Anonymous> -> model.frame.default -> terms -> terms.formula
 Exécution arrêtée
 ```
-Which is very strange as the formula and arguments of the model function, in this case `nnet`, are correct (like in many generated other programs). After searching on the internet, it seems to be a bug, where sometimes R isn't able to interpret the point `.` as all the features. Giving explicitly all the features names may work but it would add several lines that would burden the code overall, only to handle some not very clear cases.
+Which is very strange as the formula and arguments of the model function, in this case `nnet`, are correct (like in many other generated programs). After searching on the internet, it seems to be a bug, where sometimes R isn't able to interpret the point `.` as all the features. Giving explicitly all the features names may work but it would add several lines that would burden the code overall, only to handle some not very clear cases.
 This issue is discussed here: https://github.com/dmcglinn/quant_methods/issues/22
 
 ```
